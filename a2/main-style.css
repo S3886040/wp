@@ -1,9 +1,20 @@
 /* Insert your styles here */
 html body {
     overflow: auto;
+    margin: 0;
 }
-header {
-    border: red solid 2px;
+h1 {
+    margin: 0;
+    font-family: 'Amatic SC', cursive;
+}
+p {
+    font-family: 'Cormorant Garamond', serif;
+}
+#home {
+    border: #E1E2E2 solid 2px;
+    background-color: #E1E2E2;
+    color: #FB8122;
+    font-size: 20px;
 }
 .header-content-wrapper {
     width: 50%;
@@ -11,24 +22,49 @@ header {
     margin-right: auto;
     text-align: center;
 }
+.logo {
+    max-width: 80px;
+}
+.nav-bar {
+    position: sticky;
+    top: 0;
+    background-color: #610910;
+}
 .nav-list {
     text-align: center;
     list-style-type: none;
-    margin: 10px;
-    padding: 0;
+    margin: 0;
+    padding: 10px;
 }
 .nav-item {
+    color: #ffffff;
     display: inline;
 }
-
-.nav-item a {
-    padding: 20px;
-    color: black;
-    text-decoration: none;
-}
-.home-content {
+    .nav-item a {
+        padding: 20px;
+        color: white;
+        font-family: 'Cormorant Garamond', serif;
+        text-decoration: none;
+    }
+#home-content {
+    color: #ffffff;
+    margin: 0;
     height: 78vh;
+    background-color: black;
+    padding: 20vh;
+    font-size: 20px;
 }
-.about-us-section {
+.splash-header {
+    padding-bottom: 10px;
+    border-bottom: #FB8122 solid 2px; 
+}
+
+#about-us {
+    height: 100vh;
+}
+#seats-prices {
+    height: 100vh;
+}
+#now-showing {
     height: 100vh;
 }
