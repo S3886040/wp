@@ -35,12 +35,23 @@
     </nav>
 
     <main>
+    
       <section id='home-content'>
-        <h1 class='splash-header'>Lunardo Cinema</h1>
-        <p>
-            Welcome to our new Website!
-        </p>
+        <div id='filter'>
+            <div class='content'>
+      <!--
+        <img src='../../media/splash.jpg' class=''>
+       -->
+        
+                <h1 class='splash-header'>Lunardo Cinema</h1>
+                <p>
+                Welcome to our new Website!
+                </p>
+             </div>
+        </div>
       </section>
+     
+    
       <section id='about-us'>
         <h1>About Us</h1>
       </section>
