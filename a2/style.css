@@ -1,0 +1,334 @@
+/* Global Styles Are here */
+/*Color Pallette:
+    Grey header background: #E1E2E2
+    Orange Highlights: #FB8122
+    nav bar background color(red): #610910
+    White Writing: #ffffff
+    Black Background: #000000
+*/
+html body {
+    overflow: auto;
+    margin: 0;
+}
+h1,h2,h3 {
+    margin: 0;
+    font-family: 'Amatic SC', cursive;
+}
+p, ul, table {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 20px;
+}
+.underline {
+    padding-bottom: 10px;
+    max-width: 150px;
+    border-bottom: #FB8122 solid 2px;
+}
+/*Header and Nav bar styles go here*/
+#home {
+    border: #E1E2E2 solid 2px;
+    background-color: #E1E2E2;
+    color: #FB8122;
+}
+.header-content-wrapper {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.logo {
+    max-width: 80px;
+}
+.nav-bar {
+    position: sticky;
+    z-index:100;
+    top: 0;
+    background-color: #610910;
+}
+.nav-list {
+    text-align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+}
+.nav-item {
+    color: #ffffff;
+    display: inline;
+}
+.nav-item a:hover {
+    color: #FB8122;
+}
+.nav-item a {
+    padding-left: 40px;
+    padding-right: 40px;
+    color: white;
+    font-size: 18px;
+    font-family: 'Cormorant Garamond', serif;
+    text-decoration: none;
+}
+/*Home Page Styles are here*/
+div#filter {
+    background-color: rgba(0,0,0,0.8);
+    width: 100%;
+    height: 100%;
+}
+.content {
+    position: relative;
+    top: 20vh;
+    left: 20vh;
+    max-width: 80%;
+    height: 100%;
+}
+button a {
+    text-decoration: none;
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+    color: #ffffff;
+    padding: 15px;
+}
+.content button {
+    border-radius: 8px;
+    border-color: #FB8122;
+    background-color: #FB8122;
+}
+.content button:hover {
+    box-shadow: 5px 5px rgba(0,0,0,0.4);
+}
+#home-content {
+    background: url('../../media/splash.jpg') no-repeat center;
+    background-color: #000000;
+    color: #ffffff;
+    margin: 0;
+    height: 80vh;
+}
+/*About us section styles are here*/
+#about-us {
+    background: url('../../media/about-us.jpg') no-repeat center;
+    height: 100vh;
+    background-color: #E1E2E2;
+    overflow: inherit;
+}
+div#about-us-filter {
+    background-color: rgba(225, 226, 226, 0.9);
+    width: 100%;
+    height: 100%;
+}
+.about-us-content {
+    position: relative;
+    top:30vh;
+    left: 20vh;
+    max-width: 80%;
+    max-height: 100%;
+    margin-bottom: 100px;
+}
+#about-us h1 {
+    font-size: 30px;
+}
+/*Seat/Prices section styles are here*/
+#seats-prices {
+    min-height: 100%;
+}
+#seats-prices h1 {
+    font-size: 30px;
+}
+.seats-prices-content {
+    font-family: 'Cormorant Garamond', serif;
+    position: relative;
+    top: 10vh;
+    left: 20vh;
+    max-width: 80%;
+    height: 100%;
+}
+.seat-img {
+    max-width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+}
+table {
+    border-collapse: collapse;
+    width:100%;
+    margin-top: 15px;
+}
+th {
+    padding-top: 20px;
+    background-color: #610910;
+    color: #ffffff;
+}
+td, th {
+    padding: 10px;
+}
+td {
+    text-align: center;
+}
+
+/*Now Showing section styles are here*/
+#now-showing {
+    min-height: 100vh;
+    background-color: #000000;
+}
+#now-showing h1 {
+    font-size: 30px;
+}
+.now-showing-content {
+    position: relative;
+    top:10vh;
+    left: 20vh;
+    max-width: 80%;
+    height: 100%;
+    color: #ffffff;
+}
+/*Flip card section*/
+.card-layout {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.card-layout:nth-child(2n+1) {
+    padding-bottom: 150px;
+}
+.flip-card {
+    background-color: transparent;
+    width: 400px;
+    height: 300px;
+    margin: 20px;
+    justify-self: center;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    color: black;
+}
+
+.flip-card-back {
+    background-color: #E1E2E2;
+    width: 360px;
+    color: #000000;
+    transform: rotateY(180deg);
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 15px;
+}
+.flip-card-back p {
+    margin: 0;
+    padding-top: 10px;
+    margin-bottom: 4px;
+    font-size: 16px;
+}
+button a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 15px;
+}
+.flip-card-back button {
+    border-radius: 8px;
+    border-color: #FB8122;
+    background-color: #FB8122;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+.flip-card-back button:hover {
+    box-shadow: 5px 5px rgba(0,0,0,0.4);
+}
+.flip-card-back h2 {
+    padding-top: 10px;
+}
+ul {
+    list-style-type: none;
+}
+.flip-card img {
+    max-width: 100%;
+    max-height: 80%;
+    object-fit: scale-down;
+}
+
+.img-left {
+    width: 50%;
+    padding-left: 20px;
+}
+.content-right {
+    padding-left: 20px;
+    width: 50%;
+}
+.flip-card-front p {
+    background-color: #E1E2E2;
+    font-family: 'Amatic SC', cursive;
+    max-width: 150px;
+}
+.flip-card-front h2 {
+    font-size: 30px;
+}
+
+/*BreakPoints for screen sizes*/
+/*Medium size screens*/
+@media only screen and (max-width: 768px) {
+    #about-us {
+        height: 150vh;
+    }
+
+    .content, .about-us-content, .seats-prices-content, .now-showing-content {
+        left: 15vh;
+    }
+
+    .nav-item a {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .card-layout {
+        display: grid;
+        grid-template-columns: auto;
+    }
+}
+@media only screen and (max-width: 600px) {
+    #about-us {
+        height: 150vh;
+    }
+
+    .content, .about-us-content, .seats-prices-content, .now-showing-content {
+        left: 5vh;
+    }
+
+    .nav-item a {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .flip-card, .flip-card-back {
+        width: 300px;
+    }
+    .flip-card-back {
+        width: 280px;
+        padding-left: 10px;
+        padding-right: 10px;
+        overflow: auto;
+    }
+}
+
+
