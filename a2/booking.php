@@ -108,7 +108,7 @@
                     <label>Your Name</label><br/>
                     <input type='text' name=user[name] required/><br/>
                     <label>Email Address</label><br/>
-                    <input type='text' name=user[email] required/><br/>
+                    <input type='email' name=user[email] required/><br/>
                     <label>Mobile Number</label><br/>
                     <input type='text' name=user[mobile] required/><br/>
                 </fieldset>

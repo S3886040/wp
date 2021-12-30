@@ -161,7 +161,7 @@
                   <div class="flip-card-inner">
                     <div class="flip-card-front">
                        <div class='img-left'>
-                       <img src="../../media/Cyrano.jpg" alt="Dune Movie Poster" style="width:300px;height:300px;">
+                       <img src="../../media/Cyrano.jpg" alt="Cyrano Movie Poster" style="width:300px;height:300px;">
                        </div>
                        <div class='content-right'>
                        <h2>Cyrano</h2>
@@ -194,7 +194,7 @@
                   <div class="flip-card-inner">
                     <div class="flip-card-front">
                        <div class='img-left'>
-                       <img src="../../media/Spiderman-nowayhome.jpg" alt="Dune Movie Poster" style="width:300px;height:300px;">
+                       <img src="../../media/spiderman-nowayhome.jpg" alt="Spider-Man no way home Movie Poster" style="width:300px;height:300px;">
                        </div>
                        <div class='content-right'>
                        <h2>Spider Man - No way Home</h2>
@@ -226,7 +226,7 @@
                   <div class="flip-card-inner">
                     <div class="flip-card-front">
                        <div class='img-left'>
-                       <img src="../../media/Silent-night.jpg" alt="Dune Movie Poster" style="width:300px;height:300px;">
+                       <img src="../../media/silent-night.jpg" alt="Silent Night Movie Poster" style="width:300px;height:300px;">
                        </div>
                        <div class='content-right'>
                        <h2>Silent Night</h2>
