@@ -14,7 +14,7 @@ h1,h2,h3 {
     margin: 0;
     font-family: 'Amatic SC', cursive;
 }
-p, ul, table {
+p, ul, table, form {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
     font-size: 20px;
@@ -39,6 +39,7 @@ p, ul, table {
 .logo {
     max-width: 80px;
 }
+/*Orignal idea for stick nav bar sourced from https://dev.to/asaaki/sticky-navigation-bar-without-javascript-4d1p */
 .nav-bar {
     position: sticky;
     z-index:100;
@@ -94,6 +95,7 @@ button a {
 .content button:hover {
     box-shadow: 5px 5px rgba(0,0,0,0.4);
 }
+/*Original image sourced from Freepik https://www.freepik.com/free-photo/rows-red-seats-theater_3532061.htm#page=1&query=cinema&position=1&from_view=search */
 #home-content {
     background: url('../../media/splash.jpg') no-repeat center;
     background-color: #000000;
@@ -102,6 +104,7 @@ button a {
     height: 80vh;
 }
 /*About us section styles are here*/
+/*Original image sourced from Pexels https://www.pexels.com/photo/retro-plastic-bobbin-with-film-3921000/ */
 #about-us {
     background: url('../../media/about-us.jpg') no-repeat center;
     height: 100vh;
@@ -179,14 +182,14 @@ td {
     height: 100%;
     color: #ffffff;
 }
-/*Flip card section*/
+/*Flip card section styles are originally sourced from W3Schools - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_flip_card */
 .card-layout {
     display: grid;
     grid-template-columns: auto auto;
 }
 
 .card-layout:nth-child(2n+1) {
-    padding-bottom: 150px;
+    padding-bottom: 80px;
 }
 .flip-card {
     background-color: transparent;
@@ -224,7 +227,9 @@ td {
     background-color: #ffffff;
     color: black;
 }
-
+.flip-card-front p {
+    margin: 0;
+}
 .flip-card-back {
     background-color: #E1E2E2;
     width: 360px;
@@ -284,7 +289,112 @@ ul {
 .flip-card-front h2 {
     font-size: 30px;
 }
+footer {
+    position: relative;
+    left: 10vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    max-width: 80%;
+}
+/*Added styles for booking page*/
+/*Styles for #movie-details section*/
+#movie-details {
+    padding-bottom: 150px;
+    background-color: #000000;
+}
+.movie-details-content {
+    position: relative;
+    top: 10vh;
+    left: 20vh;
+    max-width: 80%;
+    height: 100%;
+    color: #ffffff;
+}
+.flex-details {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.flex-details img {
+    max-width: 100%;
+    max-height: 80%;
+    object-fit: scale-down;
+}
+.flex-details .content-right, .flex-details .img-left {
+    padding-left: 0px;
+}
+#movie-details h1 {
+    font-size: 40px;
+}
+/*Styles for booking Form*/
+#booking-form {
+    background-color: #E1E2E2;
+    padding-bottom:150px;
+}
+#booking-form h1 {
+    font-size: 30px;
+}
+.booking-form-content {
+    position: relative;
+    top: 10vh;
+    left: 20vh;
+    max-width: 80%;
+    height: 100%;
+}
+fieldset {
+    border: none;
+}
+form {
+    position:relative;
+    left: 15vw;
+    width:80%;
+}
+.day-set {
+    display: block;
+}
+/*Style for arrow button removal sourced from w3schools https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+    position: absolute;
+    left: 60vh;
+}
+input[type=radio]:checked + label {
+    box-shadow: 0px 0px;
+}
+input[type=radio] {
+    display: none;
+}
+.day-set label {
+    margin-right: 20px;
+    background: #FB8122;
+    border-radius: 4px;
+    padding: 6px;
+    box-shadow: 3px 3px rgba(0,0,0,0.5);
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+}
+legend {
+    font-weight: bold;
+}
+input[type=submit] {
+    margin-right: 20px;
+    background: #FB8122;
+    border-radius: 4px;
+    padding: 6px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+    position: relative;
+    left: 40vw;
 
+}
 /*BreakPoints for screen sizes*/
 /*Medium size screens*/
 @media only screen and (max-width: 768px) {
@@ -312,7 +422,7 @@ ul {
         height: 150vh;
     }
 
-    .content, .about-us-content, .seats-prices-content, .now-showing-content {
+    .content, .about-us-content, .seats-prices-content, .now-showing-content, footer {
         left: 5vh;
     }
 
@@ -330,5 +440,6 @@ ul {
         overflow: auto;
     }
 }
+
 
 

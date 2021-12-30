@@ -21,7 +21,7 @@
         <div class ='header-content-wrapper'>
             <h1>Lunardo</h1>
             <!-- Sourced from https://vector.me/browse/690940/camera_icon -->
-            <img src='../../media/camera_icon.svg' class='logo' alt='Lunardo Icon'>
+            <a href='index.php'><img src='../../media/camera_icon.svg' class='logo' alt='Lunardo Icon'></a>
         </div>  
     </header>
 
@@ -132,8 +132,13 @@
                        <h3>M</h3>
                        <h3>Session Times:</h3>
                        <div class='underline'></div>
-                        <p>10:30am<p>
-                        <p>2pm<p>
+                        <h3>Mon-Tues</h3>
+                        <p>9pm<p>
+                        <h3>Wed-Fri</h3>
+                        <p>9pm<p>
+                        <h3>Sat-Sun</h3>
+                        <p>6pm<p>
+                        
                        </div>
                   
                     </div>
@@ -163,8 +168,12 @@
                        <h3>M</h3>
                        <h3>Session Times:</h3>
                        <div class='underline'></div>
-                        <p>10:30am<p>
-                        <p>2pm<p>
+                        <h3>Mon-Tues</h3>
+                        <p>6pm<p>
+                        <h3>Wed-Fri</h3>
+                        <p>-<p>
+                        <h3>Sat-Sun</h3>
+                        <p>3pm<p>
                        </div>
                   
                     </div>
@@ -192,8 +201,12 @@
                        <h3>M</h3>
                        <h3>Session Times:</h3>
                        <div class='underline'></div>
-                        <p>10:30am<p>
-                        <p>2pm<p>
+                        <h3>Mon-Tues</h3>
+                        <p>12pm<p>
+                        <h3>Wed-Fri</h3>
+                        <p>6pm<p>
+                        <h3>Sat-Sun</h3>
+                        <p>3pm<p>
                        </div>
                   
                     </div>
@@ -216,12 +229,16 @@
                        <img src="../../media/Silent-night.jpg" alt="Dune Movie Poster" style="width:300px;height:300px;">
                        </div>
                        <div class='content-right'>
-                       <h2>Dune(2021)</h2>
+                       <h2>Silent Night</h2>
                        <h3>MA</h3>
                        <h3>Session Times:</h3>
                        <div class='underline'></div>
-                        <p>10:30am<p>
-                        <p>2pm<p>
+                        <h3>Mon-Tues</h3>
+                        <p>-<p>
+                        <h3>Wed-Fri</h3>
+                        <p>12pm<p>
+                        <h3>Sat-Sun</h3>
+                        <p>9pm<p>
                        </div>
                   
                     </div>
@@ -246,7 +263,7 @@
     <footer>
       <div>&copy;<script>
         document.write(new Date().getFullYear());
-      </script> Justin Healy, s3886040. Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
+      </script> Justin Healy, s3886040.<a href='https://github.com/S3886040/wp/tree/main/a2'>GitHub</a> Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
       <div>Disclaimer: This website is not a real website and is being developed as part of a School of Science Web Programming course at RMIT University in Melbourne, Australia.</div>
       <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
     </footer>
