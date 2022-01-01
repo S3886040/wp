@@ -121,6 +121,12 @@
       </section>
     </main>
     <footer>
+      <div>
+        Contact Info-<br>
+        Email: contact@lunardo-cinema.com.au<br>
+        Phone: (03) 9788 7883<br>
+        Address: 34 cresent st Mt Martha, 3467
+      </div>
       <div>&copy;<script>
           document.write(new Date().getFullYear());
         </script> Justin Healy, s3886040. Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
