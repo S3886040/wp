@@ -22,7 +22,7 @@
       <div class='header-content-wrapper'>
         <h1>Lunardo</h1>
         <!-- Sourced from https://vector.me/browse/690940/camera_icon -->
-        <a href='index.php'><img src='../../media/camera_icon.svg' class='logo' alt='Lunardo Icon'></a>
+        <img src='../../media/camera_icon.svg' class='logo' alt='Lunardo Icon'>
       </div>
     </header>
 
@@ -136,13 +136,13 @@
                     <div class='underline'></div>
                     <h3>Mon-Tues</h3>
                     <p>9pm
-                    <p>
+                    </p>
                     <h3>Wed-Fri</h3>
                     <p>9pm
-                    <p>
+                    </p>
                     <h3>Sat-Sun</h3>
                     <p>6pm
-                    <p>
+                    </p>
 
                   </div>
 
@@ -175,13 +175,13 @@
                     <div class='underline'></div>
                     <h3>Mon-Tues</h3>
                     <p>6pm
-                    <p>
+                    </p>
                     <h3>Wed-Fri</h3>
                     <p>-
-                    <p>
+                    </p>
                     <h3>Sat-Sun</h3>
                     <p>3pm
-                    <p>
+                    </p>
                   </div>
 
                 </div>
@@ -211,13 +211,13 @@
                     <div class='underline'></div>
                     <h3>Mon-Tues</h3>
                     <p>12pm
-                    <p>
+                    </p>
                     <h3>Wed-Fri</h3>
                     <p>6pm
-                    <p>
+                    </p>
                     <h3>Sat-Sun</h3>
                     <p>3pm
-                    <p>
+                    </p>
                   </div>
 
                 </div>
@@ -246,13 +246,13 @@
                     <div class='underline'></div>
                     <h3>Mon-Tues</h3>
                     <p>-
-                    <p>
+                    </p>
                     <h3>Wed-Fri</h3>
                     <p>12pm
-                    <p>
+                    </p>
                     <h3>Sat-Sun</h3>
                     <p>9pm
-                    <p>
+                    </p>
                   </div>
 
                 </div>

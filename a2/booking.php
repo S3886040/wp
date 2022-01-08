@@ -7,8 +7,8 @@
     <title>Lunardo Booking Page</title>
 
     <!-- Keep wireframe.css for debugging, add your css to style.css -->
-    <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
-    <link id='stylecss' type="text/css" rel="stylesheet" href="style.css?t=<?= filemtime("style.css"); ?>">
+    <link id="wireframecss" type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
+    <link id="stylecss" type="text/css" rel="stylesheet" href="style.css?t=<?= filemtime("style.css"); ?>">
     <script src='../wireframe.js'></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,13 +53,13 @@
               <div class='underline'></div>
               <h3>Mon-Tues</h3>
               <p>9pm
-              <p>
+              </p>
               <h3>Wed-Fri</h3>
               <p>9pm
-              <p>
+              </p>
               <h3>Sat-Sun</h3>
               <p>6pm
-              <p>
+              </p>
             </div>
           </div>
           <h2>Synopsis</h2>
@@ -80,7 +80,7 @@
           <h1>Booking</h1>
           <div class='underline'></div>
           <form action='booking.php' method='POST'>
-            <input type="hidden" name="ACT">
+            <input type="hidden" name="movie" and value="ACT">
             <fieldset class='seat-set'>
               <legend>Seat Choice</legend>
               <label>Standard Adult</label>
@@ -129,7 +129,7 @@
       </div>
       <div>&copy;<script>
           document.write(new Date().getFullYear());
-        </script> Justin Healy, s3886040. Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
+        </script> Justin Healy, s3886040.<a href='https://github.com/S3886040/wp/tree/main/a2'>GitHub</a>. Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
       <div>Disclaimer: This website is not a real website and is being developed as part of a School of Science Web Programming course at RMIT University in Melbourne, Australia.</div>
       <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
     </footer>
