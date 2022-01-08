@@ -1,0 +1,467 @@
+/* Global Styles Are here */
+/*Color Pallette:
+    Grey header background: #E1E2E2
+    Orange Highlights: #FB8122
+    nav bar background color(red): #610910
+    White Writing: #ffffff
+    Black Background: #000000
+*/
+html body {
+  overflow: auto;
+  margin: 0;
+}
+/* Original idea sourced from https://levelup.gitconnected.com/animated-page-scroll-with-html-and-css-only-3788c4e2b853 */
+html {
+  scroll-behavior: smooth;
+}
+h1,
+h2,
+h3,
+.button {
+  margin: 0;
+  font-family: "Amatic SC", cursive;
+}
+p,
+ul,
+table,
+form {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+.underline {
+  padding-bottom: 10px;
+  max-width: 150px;
+  border-bottom: #fb8122 solid 2px;
+}
+/*Header and Nav bar styles go here*/
+#home {
+  border: #e1e2e2 solid 2px;
+  background-color: #e1e2e2;
+  color: #000000;
+}
+.header-content-wrapper {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.logo {
+  max-width: 80px;
+}
+/*Orignal idea for stick nav bar sourced from https://dev.to/asaaki/sticky-navigation-bar-without-javascript-4d1p */
+.nav-bar {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  background-color: #610910;
+}
+.nav-list {
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+}
+.nav-item {
+  color: #ffffff;
+  display: inline;
+}
+.nav-item a:hover {
+  color: #fb8122;
+}
+.nav-item a {
+  padding-left: 40px;
+  padding-right: 40px;
+  color: white;
+  font-size: 18px;
+  font-family: "Cormorant Garamond", serif;
+  text-decoration: none;
+}
+/*Home Page Styles are here*/
+div#filter {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+}
+.content {
+  position: relative;
+  top: 20vh;
+  left: 20vh;
+  max-width: 80%;
+  height: 100%;
+}
+#home-content .button:hover {
+  box-shadow: 2px 2px rgba(255, 255, 255, 0.7);
+}
+.button {
+  text-decoration: none;
+  font-family: "Amatic SC", cursive;
+  font-size: 25px;
+  color: #000000;
+  padding: 15px;
+  border-radius: 8px;
+  border-color: #fb8122;
+  background-color: #fb8122;
+  max-height: 30px;
+  max-width: 100px;
+  text-align: center;
+}
+
+/*Original image sourced from Freepik https://www.freepik.com/free-photo/rows-red-seats-theater_3532061.htm#page=1&query=cinema&position=1&from_view=search */
+#home-content {
+  background: url("../../media/splash.jpg") no-repeat center;
+  background-color: #000000;
+  color: #ffffff;
+  margin: 0;
+  height: 80vh;
+}
+/*About us section styles are here*/
+/*Original image sourced from Pexels https://www.pexels.com/photo/retro-plastic-bobbin-with-film-3921000/ */
+#about-us {
+  background: url("../../media/about-us.jpg") no-repeat center;
+  height: 100vh;
+  background-color: #e1e2e2;
+  overflow: inherit;
+}
+div#about-us-filter {
+  background-color: rgba(225, 226, 226, 0.9);
+  width: 100%;
+  height: 100%;
+}
+.about-us-content {
+  position: relative;
+  top: 30vh;
+  left: 20vh;
+  max-width: 80%;
+  max-height: 100%;
+  margin-bottom: 100px;
+}
+#about-us h1 {
+  font-size: 30px;
+}
+/*Seat/Prices section styles are here*/
+#seats-prices {
+  min-height: 100%;
+}
+#seats-prices h1 {
+  font-size: 30px;
+}
+.seats-prices-content {
+  font-family: "Cormorant Garamond", serif;
+  position: relative;
+  top: 10vh;
+  left: 20vh;
+  max-width: 80%;
+  height: 100%;
+}
+.seat-img {
+  max-width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 15px;
+}
+th {
+  padding-top: 20px;
+  background-color: #610910;
+  color: #ffffff;
+}
+td,
+th {
+  padding: 10px;
+}
+td {
+  text-align: center;
+}
+
+/*Now Showing section styles are here*/
+#now-showing {
+  min-height: 100vh;
+  background-color: #000000;
+}
+#now-showing h1 {
+  font-size: 30px;
+}
+.now-showing-content {
+  position: relative;
+  top: 10vh;
+  left: 20vh;
+  max-width: 80%;
+  height: 100%;
+  color: #ffffff;
+}
+/*Flip card section styles are originally sourced from W3Schools - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_flip_card */
+.card-layout {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.card-layout:nth-child(2n + 1) {
+  padding-bottom: 80px;
+}
+.flip-card {
+  background-color: transparent;
+  width: 400px;
+  height: 300px;
+  margin: 20px;
+  justify-self: center;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: black;
+}
+.flip-card-front p {
+  margin: 0;
+}
+.flip-card-back {
+  background-color: #e1e2e2;
+  width: 360px;
+  color: #000000;
+  transform: rotateY(180deg);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 15px;
+  display: flex;
+  flex-flow: nowrap;
+  flex-direction: column;
+  overflow: auto;
+}
+.flip-card-back .underline {
+  height: 4px;
+}
+.flip-card-back p {
+  margin: 0;
+  padding-top: 10px;
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+.flip-card-back .button:hover {
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.4);
+}
+.flip-card-back h2 {
+  padding-top: 10px;
+}
+ul {
+  list-style-type: none;
+}
+.flip-card img {
+  max-width: 100%;
+  max-height: 80%;
+  object-fit: scale-down;
+}
+
+.img-left {
+  width: 50%;
+  padding-left: 20px;
+}
+.content-right {
+  padding-left: 20px;
+  width: 50%;
+}
+.flip-card-front p {
+  background-color: #e1e2e2;
+  font-family: "Amatic SC", cursive;
+  max-width: 150px;
+}
+.flip-card-front h2 {
+  font-size: 30px;
+}
+footer {
+  position: relative;
+  left: 10vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  max-width: 80%;
+}
+/*Added styles for booking page*/
+/*Styles for #movie-details section*/
+#movie-details {
+  padding-bottom: 150px;
+  background-color: #000000;
+}
+.movie-details-content {
+  position: relative;
+  top: 10vh;
+  left: 20vh;
+  max-width: 80%;
+  height: 100%;
+  color: #ffffff;
+}
+.flex-details {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.flex-details img {
+  max-width: 100%;
+  max-height: 80%;
+  object-fit: scale-down;
+}
+.flex-details .content-right,
+.flex-details .img-left {
+  padding-left: 0px;
+}
+#movie-details h1 {
+  font-size: 40px;
+}
+/*Styles for booking Form*/
+#booking-form {
+  background-color: #e1e2e2;
+  padding-bottom: 150px;
+}
+#booking-form h1 {
+  font-size: 30px;
+}
+.booking-form-content {
+  position: relative;
+  top: 10vh;
+  left: 20vh;
+  max-width: 80%;
+  height: 100%;
+}
+fieldset {
+  border: none;
+}
+form {
+  position: relative;
+  left: 15vw;
+  width: 80%;
+}
+.day-set {
+  display: block;
+}
+/*Style for arrow button removal sourced from w3schools https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  position: absolute;
+  left: 60vh;
+}
+input[type="radio"]:checked + label {
+  box-shadow: 0px 0px;
+}
+input[type="radio"] {
+  display: none;
+}
+.day-set label {
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 10px;
+  background: #fb8122;
+  border-radius: 4px;
+  padding: 6px;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+  font-family: "Amatic SC", cursive;
+  font-size: 25px;
+  transition: 0.1s;
+}
+legend {
+  font-weight: bold;
+}
+input[type="submit"] {
+  margin-right: 20px;
+  background: #fb8122;
+  border-radius: 4px;
+  padding: 6px;
+  font-family: "Amatic SC", cursive;
+  font-size: 25px;
+  position: relative;
+  left: 40vw;
+}
+/*BreakPoints for screen sizes*/
+/*Medium size screens*/
+@media only screen and (max-width: 768px) {
+  #about-us {
+    height: 150vh;
+  }
+
+  .content,
+  .about-us-content,
+  .seats-prices-content,
+  .now-showing-content,
+  .movie-details-content,
+  .booking-form-content {
+    left: 15vh;
+  }
+
+  .nav-item a {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .card-layout {
+    display: grid;
+    grid-template-columns: auto;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #about-us {
+    height: 150vh;
+  }
+
+  .content,
+  .about-us-content,
+  .seats-prices-content,
+  .now-showing-content,
+  .movie-details-content,
+  .booking-form-content,
+  footer {
+    left: 2vh;
+    max-width: 97%;
+  }
+  form {
+    left: 0vw;
+  }
+  .nav-item a {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .flip-card,
+  .flip-card-back {
+    width: 300px;
+  }
+  .flip-card-back {
+    width: 280px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
