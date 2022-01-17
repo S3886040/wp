@@ -77,6 +77,9 @@ form {
   font-family: "Cormorant Garamond", serif;
   text-decoration: none;
 }
+nav a.current {
+  color: #fb8122;
+}
 /*Home Page Styles are here*/
 div#filter {
   background-color: rgba(0, 0, 0, 0.8);
@@ -361,6 +364,9 @@ form {
   position: relative;
   left: 15vw;
   width: 80%;
+}
+.badInput {
+  background-color: pink;
 }
 .day-set {
   display: block;

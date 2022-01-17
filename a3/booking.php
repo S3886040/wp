@@ -84,17 +84,17 @@
             <fieldset class='seat-set'>
               <legend>Seat Choice</legend>
               <label>Standard Adult</label>
-              <input type='number' min='1' max='10' name=seats[STA] /><br />
+              <input id='tixQty' type='number' min='1' max='10' name=seats[STA] /><br />
               <label>Standard Concession</label>
-              <input type='number' min='1' max='10' name=seats[STP] /><br />
+              <input id='tixQty' type='number' min='1' max='10' name=seats[STP] /><br />
               <label>Standard Child</label>
-              <input type='number' min='1' max='10' name=seats[STC] /><br />
+              <input id='tixQty' type='number' min='1' max='10' name=seats[STC] /><br />
               <label>First Class Adult</label>
-              <input type='number' min='1' max='10' name=seats[FCA] /><br />
+              <input id='tixQty' type='number' min='1' max='10' name=seats[FCA] /><br />
               <label>First Class Concession</label>
-              <input type='number' min='1' max='10' name=seats[FCP] /><br />
+              <input id='tixQty' type='number' min='1' max='10' name=seats[FCP] /><br />
               <label>First Class Child</label>
-              <input type='number' min='1' max='10' name=seats[FCC] /><br />
+              <input id='tixQty' type='number' min='1' max='10' name=seats[FCC] /><br />
             </fieldset>
             <fieldset class='day-set'>
               <legend>Session Times</legend>
@@ -105,15 +105,17 @@
               <input type=radio id='fri' name='day' value='FRI' /> <label for='fri'>Friday</label>
               <input type=radio id='sat' name='day' value='SAT' /> <label for='sat'>Saturday</label>
               <input type=radio id='sun' name='day' value='SUN' /> <label for='sun'>Sunday</label>
+              <div class='underline'></div>
+              <span>Total Amount: </span>
             </fieldset>
             <fieldset class='details-set'>
               <legend>Your Details</legend>
               <label>Your Name</label><br />
-              <input type='text' name=user[name] required /><br />
+              <input id="nameInput" type='text' name=user[name] required /><br />
               <label>Email Address</label><br />
               <input type='email' name=user[email] required /><br />
               <label>Mobile Number</label><br />
-              <input type='text' name=user[mobile] required /><br />
+              <input id="numberInput" type='text' name=user[mobile] required /><br />
             </fieldset>
             <input type='submit' name='submit' value='submit' />
           </form>
@@ -133,6 +135,7 @@
       <div>Disclaimer: This website is not a real website and is being developed as part of a School of Science Web Programming course at RMIT University in Melbourne, Australia.</div>
       <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
     </footer>
+    <script src='script.js'></script>
     <aside id="debug">
       <hr>
       <h3>Debug Area</h3>
