@@ -1,3 +1,12 @@
+<?php
+  include_once('tools.php');
+  // if($SERVER['REQUEST_METHOD'] == 'POST') {
+  //   include_once('post-vaildation.php')
+  // }
+  php2js($movieObject, 'movieObjectjs');
+  php2js($currentMovie, 'currentMovie');
+?>
+
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -36,43 +45,7 @@
 
     <main>
       <section id='movie-details'>
-        <div class='movie-details-content'>
-          <div class='movie-details-header'>
-            <h1>Dune(2021)</h1>
-            <h3>Rating: M</h3>
-            <div class='underline'></div>
-          </div>
-
-          <div class='flex-details'>
-            <div class='img-left'>
-              <img src="../../media/Dune.jpg" alt="Dune Movie Poster" style="width:300px;height:300px;">
-            </div>
-            <div class='content-right'>
-              <h3>Session Times:</h3>
-              <div class='underline'></div>
-              <h3>Mon-Tues</h3>
-              <p>9pm
-              <p>
-              <h3>Wed-Fri</h3>
-              <p>9pm
-              <p>
-              <h3>Sat-Sun</h3>
-              <p>6pm
-              <p>
-            </div>
-          </div>
-          <h2>Synopsis</h2>
-          <p>
-            A mythic and emotionally charged hero's journey, "Dune" tells the story of Paul Atreides, a brilliant and gifted young man
-            born into a great destiny beyond his understanding, who must travel to the most dangerous planet in the universe to ensure the
-            future of his family and his people. As malevolent forces explode into conflict over the planet's exclusive supply of the most
-            precious resource in existence-a commodity capable of unlocking humanity's greatest potential-only those who can conquer their
-            fear will survive.
-          </p>
-          <!-- iframe video source form Youtube https://www.youtube.com/watch?v=8g18jFHCLXk-->
-          <iframe width="420" height="315" src="https://www.youtube.com/embed/8g18jFHCLXk">
-          </iframe>
-        </div>
+        <?= movieRender($currentMovie) ?>
       </section>
       <section id='booking-form'>
         <div class='booking-form-content'>
@@ -101,7 +74,8 @@
               <input id='FCC' type='number' min='1' max='10' name=seats[FCC] /><br />
             </fieldset>
             <fieldset class='day-set'>
-              <legend>Session Times</legend>
+              <legend>Day Sessions</legend>
+              <div class='underline'></div>
               <input type=radio id='mon' name='day' value='MON' /><label for='mon'> Monday</label>
               <input type=radio id='tues' name='day' value='TUES' /> <label for='tues'>Tuesday</label>
               <input type=radio id='wed' name='day' value='WED' /> <label for='wed'>Wednesday</label>
@@ -109,17 +83,17 @@
               <input type=radio id='fri' name='day' value='FRI' /> <label for='fri'>Friday</label>
               <input type=radio id='sat' name='day' value='SAT' /> <label for='sat'>Saturday</label>
               <input type=radio id='sun' name='day' value='SUN' /> <label for='sun'>Sunday</label>
-              <div class='underline'></div>
-              <span>Total Amount: </span>
             </fieldset>
             <fieldset class='details-set'>
               <legend>Your Details</legend>
+              <div class='underline'></div>
               <label for='nameInput'>Your Name</label><br />
               <input id="nameInput" type='text' name=user[name] required /><br />
               <label for='emailInput'>Email Address</label><br />
               <input id='emailInput' type='email' name=user[email] required /><br />
               <label for='numberInput'>Mobile Number</label><br />
               <input id="numberInput" type='text' name=user[mobile] required /><br />
+              <span>Total Amount: </span>
             </fieldset>
             <input type='submit' name='submit' value='submit' />
           </form>

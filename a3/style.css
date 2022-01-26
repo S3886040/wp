@@ -24,10 +24,10 @@ h3,
 p,
 ul,
 table,
-form {
+form,
+span {
   font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 17px;
+  font-size: 16px;
 }
 .underline {
   padding-bottom: 10px;
@@ -74,7 +74,8 @@ form {
   padding-right: 40px;
   color: white;
   font-size: 18px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
   text-decoration: none;
 }
 nav a.current {
@@ -181,7 +182,9 @@ th {
 td {
   text-align: center;
 }
-
+.seats-prices-content span {
+  font-size: 13px;
+}
 /*Now Showing section styles are here*/
 #now-showing {
   min-height: 100vh;
@@ -318,7 +321,6 @@ footer {
   top: 10vh;
   left: 20vh;
   max-width: 80%;
-  height: 100%;
   color: #ffffff;
 }
 .flex-details {
@@ -355,7 +357,6 @@ footer {
   top: 10vh;
   left: 20vh;
   max-width: 80%;
-  height: 100%;
 }
 fieldset {
   border: none;

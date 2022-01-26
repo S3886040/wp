@@ -9,9 +9,9 @@ window.onscroll = function () {
       .getElementsByTagName("section");
 
     for (var i = 0; i < sections.length; i++) {
-      let secTop = sections[i].offsetTop;
-      let secBot = sections[i].offsetTop + sections[i].offsetHeight;
-      if (window.scrollY >= secTop && window.scrollY < secBot) {
+      let secTop = sections[i].offsetTop - 100;
+      let secBot = sections[i].offsetTop + sections[i].offsetHeight - 100;
+      if (window.scrollY > secTop && window.scrollY <= secBot) {
         navLinks[i].classList.add("current");
       } else {
         navLinks[i].classList.remove("current");
@@ -21,7 +21,9 @@ window.onscroll = function () {
 };
 
 // Price Calculations //
+
 const tixQty = document.querySelectorAll("[type=number]");
+const dayButtons = document.querySelectorAll("[type=radio]");
 
 let prices = {
   discountedPrices: {
@@ -39,10 +41,28 @@ let prices = {
     FCA: 30.0,
     FCP: 27.0,
     FCC: 24.0,
-  },
+  }
 };
 
-let seatsSelected = {};
+let ticketSelection = { day: null };
+
+function calculatePrices() {
+  if (ticketSelection.day != null) {
+    for (var movie in movieObjectjs) {
+      if (movie == currentMovie) {
+
+      }
+    }
+  }
+}
+
+function getSessionTimes() {
+  for (var movie in movieObjectjs) {
+    if (movie == currentMovie) {
+      console.log(movieObjectjs[movie].sessionTimes);
+
+    }
+}
 
 tixQty.forEach((item) => {
   item.addEventListener("input", (e) => {
@@ -53,16 +73,25 @@ tixQty.forEach((item) => {
     }
     let seatTypeTemp = e.target.name.slice(6, 9);
     if (e.target.value != "") {
-      seatsSelected[seatTypeTemp] = e.target.value;
-      console.log(seatsSelected);
+      ticketSelection[seatTypeTemp] = e.target.value;
+      console.log(ticketSelection);
+      calculatePrices();
     } else {
-      delete seatsSelected[seatTypeTemp];
-      console.log(seatsSelected);
+      delete ticketSelection[seatTypeTemp];
+      console.log(ticketSelection);
+      calculatePrices();
     }
   });
 });
-
-function calulatePrices(seats, ticketType) {}
+dayButtons.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    if (e.target.value != "") {
+      ticketSelection.day = e.target.value;
+      console.log(ticketSelection);
+      calculatePrices();
+    }
+  });
+});
 
 // Regex Checks //
 const nameInput = document.getElementById("nameInput");
