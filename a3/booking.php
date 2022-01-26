@@ -12,8 +12,7 @@
     <script src='../wireframe.js'></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Cormorant+Garamond&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Montserrat&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -82,19 +81,24 @@
           <form action='booking.php' method='POST'>
             <input type="hidden" name="movie" and value="ACT">
             <fieldset class='seat-set'>
-              <legend>Seat Choice</legend>
-              <label>Standard Adult</label>
-              <input id='tixQty' type='number' min='1' max='10' name=seats[STA] /><br />
-              <label>Standard Concession</label>
-              <input id='tixQty' type='number' min='1' max='10' name=seats[STP] /><br />
-              <label>Standard Child</label>
-              <input id='tixQty' type='number' min='1' max='10' name=seats[STC] /><br />
-              <label>First Class Adult</label>
-              <input id='tixQty' type='number' min='1' max='10' name=seats[FCA] /><br />
-              <label>First Class Concession</label>
-              <input id='tixQty' type='number' min='1' max='10' name=seats[FCP] /><br />
-              <label>First Class Child</label>
-              <input id='tixQty' type='number' min='1' max='10' name=seats[FCC] /><br />
+              <legend>Standard Seats</legend>
+              <div class='underline'></div>
+              <label for='STA'>Adult</label>
+              <input id='STA' type='number' min='1' max='10' name=seats[STA] /><br />
+              <label for='STP'>Concession</label>
+              <input id='STP' type='number' min='1' max='10' name=seats[STP] /><br />
+              <label for='STC'>Child</label>
+              <input id='STC' type='number' min='1' max='10' name=seats[STC] /><br />
+            </fieldset>
+            <fieldset class='seat-set'>
+              <legend>First Class Seats</legend>
+              <div class='underline'></div>
+              <label for='FCA'>Adult</label>
+              <input id='FCA' type='number' min='1' max='10' name=seats[FCA] /><br />
+              <label for='FCP'>Concession</label>
+              <input id='FCP' type='number' min='1' max='10' name=seats[FCP] /><br />
+              <label for='FCC'>Child</label>
+              <input id='FCC' type='number' min='1' max='10' name=seats[FCC] /><br />
             </fieldset>
             <fieldset class='day-set'>
               <legend>Session Times</legend>
@@ -110,11 +114,11 @@
             </fieldset>
             <fieldset class='details-set'>
               <legend>Your Details</legend>
-              <label>Your Name</label><br />
+              <label for='nameInput'>Your Name</label><br />
               <input id="nameInput" type='text' name=user[name] required /><br />
-              <label>Email Address</label><br />
-              <input type='email' name=user[email] required /><br />
-              <label>Mobile Number</label><br />
+              <label for='emailInput'>Email Address</label><br />
+              <input id='emailInput' type='email' name=user[email] required /><br />
+              <label for='numberInput'>Mobile Number</label><br />
               <input id="numberInput" type='text' name=user[mobile] required /><br />
             </fieldset>
             <input type='submit' name='submit' value='submit' />

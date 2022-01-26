@@ -21,7 +21,7 @@ window.onscroll = function () {
 };
 
 // Price Calculations //
-const tixQty = document.querySelectorAll("[id=tixQty]");
+const tixQty = document.querySelectorAll("[type=number]");
 
 let prices = {
   discountedPrices: {
