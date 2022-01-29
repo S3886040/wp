@@ -1,8 +1,8 @@
 <?php
   include_once('tools.php');
-  // if($SERVER['REQUEST_METHOD'] == 'POST') {
-  //   include_once('post-vaildation.php')
-  // }
+  if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    include_once('post-vaildation.php');
+  };
   php2js($movieObject, 'movieObjectjs');
   php2js($currentMovie, 'currentMovie');
 ?>
@@ -94,6 +94,7 @@
               <label for='numberInput'>Mobile Number</label><br />
               <input id="numberInput" type='text' name=user[mobile] required /><br />
               <span>Total Amount: </span>
+              <div id="totalAmount"></div>
             </fieldset>
             <input type='submit' name='submit' value='submit' />
           </form>

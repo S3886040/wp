@@ -417,6 +417,12 @@ input[type="submit"] {
   position: relative;
   left: 40vw;
 }
+#totalAmount {
+  background-color: white;
+  width: 175px;
+  height: 20px;
+  box-shadow: 0 0 3px #000000;
+}
 /*BreakPoints for screen sizes*/
 /*Medium size screens*/
 @media only screen and (max-width: 768px) {
