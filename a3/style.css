@@ -1,10 +1,11 @@
 /* Global Styles Are here */
 /*Color Pallette:
-    Grey header background: #E1E2E2
+    Grey header background: #dbd4d5
     Orange Highlights: #FB8122
     nav bar background color(red): #610910
     White Writing: #ffffff
-    Black Background: #000000
+    Black Background: #1e1717
+    nav bar: #610910
 */
 html body {
   overflow: auto;
@@ -36,9 +37,9 @@ span {
 }
 /*Header and Nav bar styles go here*/
 #home {
-  border: #e1e2e2 solid 2px;
-  background-color: #e1e2e2;
-  color: #000000;
+  border: #dbd4d5 solid 2px;
+  background-color: #dbd4d5;
+  color: #1e1717;
 }
 .header-content-wrapper {
   width: 50%;
@@ -83,7 +84,7 @@ nav a.current {
 }
 /*Home Page Styles are here*/
 div#filter {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   width: 100%;
   height: 100%;
 }
@@ -101,7 +102,7 @@ div#filter {
   text-decoration: none;
   font-family: "Amatic SC", cursive;
   font-size: 25px;
-  color: #000000;
+  color: #1e1717;
   padding: 15px;
   border-radius: 8px;
   border-color: #fb8122;
@@ -110,11 +111,15 @@ div#filter {
   max-width: 100px;
   text-align: center;
 }
+#home-content .button {
+  position: relative;
+  top: 40px;
+}
 
 /*Original image sourced from Freepik https://www.freepik.com/free-photo/rows-red-seats-theater_3532061.htm#page=1&query=cinema&position=1&from_view=search */
 #home-content {
   background: url("../../media/splash.jpg") no-repeat center;
-  background-color: #000000;
+  background-color: #1e1717;
   color: #ffffff;
   margin: 0;
   height: 80vh;
@@ -124,7 +129,7 @@ div#filter {
 #about-us {
   background: url("../../media/about-us.jpg") no-repeat center;
   height: 100vh;
-  background-color: #e1e2e2;
+  background-color: #dbd4d5;
   overflow: inherit;
 }
 div#about-us-filter {
@@ -188,7 +193,7 @@ td {
 /*Now Showing section styles are here*/
 #now-showing {
   min-height: 100vh;
-  background-color: #000000;
+  background-color: #1e1717;
 }
 #now-showing h1 {
   font-size: 30px;
@@ -249,11 +254,12 @@ td {
 }
 .flip-card-front p {
   margin: 0;
+  font-weight: 600;
 }
 .flip-card-back {
-  background-color: #e1e2e2;
+  background-color: #dbd4d5;
   width: 360px;
-  color: #000000;
+  color: #1e1717;
   transform: rotateY(180deg);
   padding-left: 20px;
   padding-right: 20px;
@@ -296,7 +302,7 @@ ul {
   width: 50%;
 }
 .flip-card-front p {
-  background-color: #e1e2e2;
+  background-color: #dbd4d5;
   font-family: "Amatic SC", cursive;
   max-width: 150px;
 }
@@ -314,7 +320,7 @@ footer {
 /*Styles for #movie-details section*/
 #movie-details {
   padding-bottom: 150px;
-  background-color: #000000;
+  background-color: #1e1717;
 }
 .movie-details-content {
   position: relative;
@@ -346,7 +352,7 @@ footer {
 }
 /*Styles for booking Form*/
 #booking-form {
-  background-color: #e1e2e2;
+  background-color: #dbd4d5;
   padding-bottom: 150px;
 }
 #booking-form h1 {
@@ -401,6 +407,16 @@ input[type="radio"] {
   font-size: 25px;
   transition: 0.1s;
 }
+#not-showing-modal {
+  background-color: #61091095;
+  color: white;
+  border: 1px solid #1e1717;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 3px;
+  visibility: hidden;
+  margin-top: 10px;
+}
 legend {
   font-weight: bold;
 }
@@ -421,7 +437,7 @@ input[type="submit"] {
   background-color: white;
   width: 175px;
   height: 20px;
-  box-shadow: 0 0 3px #000000;
+  box-shadow: 0 0 3px #1e1717;
 }
 /*BreakPoints for screen sizes*/
 /*Medium size screens*/

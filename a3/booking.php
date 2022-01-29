@@ -1,5 +1,14 @@
 <?php
   include_once('tools.php');
+  $currentMovie = $_GET['movie'];
+  foreach ($movieObject as $key => $value) {
+    if($key == $currentMovie) {
+      $movieExists = true;
+    }
+  }
+  if(!$movieExists) {
+    header("Location: index.php");
+  }
   if($_SERVER['REQUEST_METHOD'] == 'POST') {
     include_once('post-vaildation.php');
   };
@@ -83,7 +92,9 @@
               <input type=radio id='fri' name='day' value='FRI' /> <label for='fri'>Friday</label>
               <input type=radio id='sat' name='day' value='SAT' /> <label for='sat'>Saturday</label>
               <input type=radio id='sun' name='day' value='SUN' /> <label for='sun'>Sunday</label>
+              <div id='not-showing-modal'></div>
             </fieldset>
+
             <fieldset class='details-set'>
               <legend>Your Details</legend>
               <div class='underline'></div>
@@ -96,7 +107,7 @@
               <span>Total Amount: </span>
               <div id="totalAmount"></div>
             </fieldset>
-            <input type='submit' name='submit' value='submit' />
+            <input id ='formSubmit' type='submit' name='submit' value='submit' />
           </form>
         </div>
       </section>

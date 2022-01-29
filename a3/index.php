@@ -42,7 +42,7 @@
             <h1>Lunardo Cinema</h1>
             <div class='underline'></div>
             <p>
-              Feel free to check out whats on in Now Showing Section.
+              Feel free to check out whats on in the Now Showing Section.
             </p>
             <a class='button' href='#now-showing'>Now Showing</a>
           </div>
@@ -287,7 +287,7 @@
       <div>Disclaimer: This website is not a real website and is being developed as part of a School of Science Web Programming course at RMIT University in Melbourne, Australia.</div>
       <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
     </footer>
-    <script src='script.js'></script>
+    <script src='scroll.js'></script>
   </body>
 
 </html>

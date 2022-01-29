@@ -1,32 +1,13 @@
-/// Scroll Navigation ////
-window.onscroll = function () {
-  if (window.location.pathname.includes("index")) {
-    let navLinks = document
-      .getElementsByTagName("nav")[0]
-      .getElementsByTagName("a");
-    let sections = document
-      .getElementsByTagName("main")[0]
-      .getElementsByTagName("section");
-
-    for (var i = 0; i < sections.length; i++) {
-      let secTop = sections[i].offsetTop - 100;
-      let secBot = sections[i].offsetTop + sections[i].offsetHeight - 100;
-      if (window.scrollY > secTop && window.scrollY <= secBot) {
-        navLinks[i].classList.add("current");
-      } else {
-        navLinks[i].classList.remove("current");
-      }
-    }
-  }
-};
-
 // Price Calculations //
 // These variables are global variables relative to price Calculations
 const tixQty = document.querySelectorAll("[type=number]");
 const dayButtons = document.querySelectorAll("[type=radio]");
-let totalAmount = 0;
 const totalDiv = document.getElementById("totalAmount");
-// Prices object - data is taken assignment 2 spec
+
+// Here we set create our ticket selection object which will be updated as the customers
+// enters data into the booking form.
+let ticketSelection = { day: null };
+// Prices object - data is taken from assignment 2 spec
 let prices = {
   discountedPrices: {
     STA: 15.0,
@@ -46,51 +27,62 @@ let prices = {
   },
 };
 
-// here we set create our ticket selection object which will be updated as the customers
-// enters data into the booking form.
-let ticketSelection = { day: null };
+let dayCategory = "";
+function isShowing(day) {
+  let showing;
+  // Maybe the best use of a switch case condition block is for days of the week.
+  // We must set the customers individual day selection into a format which relates
+  // to the master object created by the php object data.
+  switch (day) {
+    case "MON":
+      dayCategory = "MON-TUES";
+      break;
+    case "TUES":
+      dayCategory = "MON-TUES";
+      break;
+    case "WED":
+      dayCategory = "WED-FRI";
+      break;
+    case "THURS":
+      dayCategory = "WED-FRI";
+      break;
+    case "FRI":
+      dayCategory = "WED-FRI";
+      break;
+    case "SAT":
+      dayCategory = "SAT-SUN";
+      break;
+    case "SUN":
+      dayCategory = "SAT-SUN";
+      break;
+  }
+  if (movieObjectjs[currentMovie]["sessionTimes"][dayCategory] == "-") {
+    showing = false;
+  } else {
+    showing = true;
+  }
+  return showing;
+}
 
-// his fuction will be called each time the day or ticket amount is updated.
+// This fuction will be called each time the day or ticket amount is updated.
 function calculatePrices() {
   // function variables
   let ticketType = "normalPrices";
-  let dayCategory = "";
-  totalAmount = 0;
+  let totalAmount = 0;
 
   if (ticketSelection.day != null) {
-    // Maybe the best use of a switch case condition block is for days of the week.
-    // We must set the customers individual day selection into a format which relates
-    // to the master object created by the php object data.
-    switch (ticketSelection.day) {
-      case "MON":
-        dayCategory = "MON-TUES";
-        break;
-      case "TUES":
-        dayCategory = "MON-TUES";
-        break;
-      case "WED":
-        dayCategory = "WED-FRI";
-        break;
-      case "THURS":
-        dayCategory = "WED-FRI";
-        break;
-      case "FRI":
-        dayCategory = "WED-FRI";
-        break;
-      case "SAT":
-        dayCategory = "SAT-SUN";
-        break;
-      case "SUN":
-        dayCategory = "SAT-SUN";
-        break;
-    }
-
     // This loop will decide if the customers day selection will be calcualted
     // as a discounted price or normal price taking into consideration the screening
     // time.
+    // movieObjectjs is taken from the global scope spun up by tools.php's php2js function
     for (var movie in movieObjectjs) {
       if (movie == currentMovie) {
-        let time = movieObjectjs[movie].sessionTimes[dayCategory];
+        var time = movieObjectjs[movie].sessionTimes[dayCategory];
+        if (time.length == 4) {
+          time = time.slice(0, 2);
+        } else if (time.length == 3) {
+          time = time.slice(0, 1);
+        }
         if (ticketSelection.day == "MON") {
           ticketType = "discountedPrices";
         } else if (
@@ -108,7 +100,6 @@ function calculatePrices() {
     // This nested loop will calculate the price using price objects and selections
     // then update the global variable totalAmount
     for (var ticket in ticketSelection) {
-      let totalAmountTemp;
       for (var price in prices[ticketType]) {
         if (ticket == price) {
           totalAmount += prices[ticketType][price] * ticketSelection[ticket];
@@ -116,35 +107,57 @@ function calculatePrices() {
       }
     }
     // This will update our html page to inform the user
-    totalDiv.innerHTML = totalAmount;
+    if (totalAmount > 0) {
+      totalDiv.innerHTML = "$" + totalAmount.toFixed(2);
+    } else {
+      totalDiv.innerHTML = "";
+    }
   }
 }
 
-tixQty.forEach((item) => {
-  item.addEventListener("input", (e) => {
+tixQty.forEach(function (item) {
+  item.addEventListener("input", function (e) {
+    tixQty.forEach(function (item) {
+      item.classList.remove("badInput");
+    });
+
     if (e.target.value > 10) {
       e.target.value = 10;
-    } else if (e.target.value < 1 || e.target.value == 0) {
+    } else if (e.target.value <= 0) {
       e.target.value = "";
     }
     let seatTypeTemp = e.target.name.slice(6, 9);
     if (e.target.value != "") {
       ticketSelection[seatTypeTemp] = e.target.value;
-      console.log(ticketSelection);
-      calculatePrices();
+      let showing = isShowing(ticketSelection.day);
+      if (showing) {
+        calculatePrices();
+      } else {
+        totalDiv.innerHTML = "";
+      }
     } else {
       delete ticketSelection[seatTypeTemp];
-      console.log(ticketSelection);
       calculatePrices();
     }
   });
 });
+
+notShowingModal = document.getElementById("not-showing-modal");
 dayButtons.forEach((item) => {
-  item.addEventListener("click", (e) => {
+  item.addEventListener("click", function (e) {
     if (e.target.value != "") {
       ticketSelection.day = e.target.value;
-      console.log(ticketSelection);
-      calculatePrices();
+      let showing = isShowing(ticketSelection.day);
+      console.log(showing);
+      if (showing) {
+        calculatePrices();
+        notShowingModal.style.visibility = "hidden";
+        notShowingModal.innerHTML = "";
+      } else {
+        notShowingModal.style.visibility = "visible";
+        notShowingModal.innerHTML = "The film is not showing on this day";
+        totalDiv.innerHTML = "";
+      }
     }
   });
 });
@@ -152,26 +165,74 @@ dayButtons.forEach((item) => {
 // Regex Checks //
 const nameInput = document.getElementById("nameInput");
 const numberInput = document.getElementById("numberInput");
+const emailInput = document.getElementById("emailInput");
 
 const nameRegex = /^[a-zA-Z '.-]{1,255}$/;
-
 const numberRegex = /^(\(04\)|04|\+614)( ?\d){8}$/;
+const emailRegex = /^[a-zA-Z0-9_\-.]+@[a-zA-Z0-9\-.]+$/;
+
+function regexTester(regex, input) {
+  console.log(input.value);
+  let passed = false;
+  if (!regex.test(input.value)) {
+    input.classList.add("badInput");
+  }
+  if (regex.test(input.value)) {
+    input.classList.remove("badInput");
+    passed = true;
+  }
+  return passed;
+}
 
 nameInput.addEventListener("input", function () {
-  if (!nameRegex.test(nameInput.value)) {
-    nameInput.classList.add("badInput");
-  }
-  if (nameRegex.test(nameInput.value)) {
-    nameInput.classList.remove("badInput");
-  }
+  regexTester(nameRegex, nameInput);
 });
 
 numberInput.addEventListener("input", function () {
-  if (!numberRegex.test(numberInput.value)) {
-    numberInput.classList.add("badInput");
+  regexTester(numberRegex, numberInput);
+});
+
+emailInput.addEventListener("input", function () {
+  regexTester(emailRegex, emailInput);
+});
+
+// On Submit //
+const formSubmit = document.getElementById("formSubmit");
+
+formSubmit.addEventListener("click", function (e) {
+  let ticketChosen = false;
+  for (var ticket in ticketSelection) {
+    for (var price in prices["normalPrices"]) {
+      if (ticket == price) {
+        ticketChosen = true;
+      }
+    }
   }
-  if (numberRegex.test(numberInput.value)) {
-    numberInput.classList.remove("badInput");
+  if (!ticketChosen) {
+    tixQty.forEach(function (item) {
+      item.classList.add("badInput");
+    });
+  }
+
+  if (ticketSelection.day == null) {
+    notShowingModal.style.visibility = "visible";
+    notShowingModal.innerHTML = "Please Select a day";
+  }
+
+  regexTester(nameRegex, nameInput);
+  regexTester(numberRegex, numberInput);
+  regexTester(emailRegex, emailInput);
+
+  let showing = showing(ticketSelection.day);
+  if (
+    !ticketChosen ||
+    ticketSelection.day == null ||
+    !regexTester(numberRegex, numberInput) ||
+    !regexTester(numberRegex, numberInput) ||
+    regexTester(emailRegex, emailInput) ||
+    !showing
+  ) {
+    e.preventDefault();
   }
 });
 

@@ -1,16 +1,14 @@
 <?php
   session_start();
-  $currentMovie = $_GET['movie'];
-
   $movieObject = [
     'ACT' => [
       'title' => 'Dune(2021)',
       'rating' => 'MA',
       'poster' => 'Dune.jpg',
       'sessionTimes' => [
-        'MON-TUES' => '9',
-        'WED-FRI' => '9',
-        'SAT-SUN' => '9'
+        'MON-TUES' => '9pm',
+        'WED-FRI' => '9pm',
+        'SAT-SUN' => '9pm'
       ],
       'synopsis' => "A mythic and emotionally charged hero's journey, 'Dune' tells the story of Paul Atreides, a brilliant and gifted young man
       born into a great destiny beyond his understanding, who must travel to the most dangerous planet in the universe to ensure the
@@ -21,12 +19,12 @@
     ],
     'RMC' => [
       'title' => 'Cyrano',
-      'Rating' => 'M',
+      'rating' => 'M',
       'poster' => 'Cyrano.jpg',
       'sessionTimes' => [
-        'MON-TUES' => '6',
+        'MON-TUES' => '6pm',
         'WED-FRI' => '-',
-        'SAT-SUN' => '3'
+        'SAT-SUN' => '3pm'
       ],
       'synopsis' => "A man ahead of his time, Cyrano de Bergerac dazzles whether with ferocious wordplay at a verbal joust or with brilliant swordplay
       in a duel. But, convinced that his appearance renders him unworthy of the love of a devoted friend, the luminous Roxanne, Cyrano has yet to declare
@@ -38,9 +36,9 @@
       'rating' => 'M',
       'poster' => 'spiderman-nowayhome.jpg',
       'sessionTimes' => [
-        'MON-TUES' => '12',
-        'WED-FRI' => '6',
-        'SAT-SUN' => '3'
+        'MON-TUES' => '12pm',
+        'WED-FRI' => '6pm',
+        'SAT-SUN' => '3pm'
       ],
       'synopsis' => "Peter Parker's secret identity is revealed to the entire world. Desperate for help, Peter turns to Doctor Strange to make the world
       forget that he is Spider-Man. The spell goes horribly wrong and shatters the multiverse, bringing in monstrous villains that could destroy the world.",
@@ -52,8 +50,8 @@
       'poster' => 'silent-night.jpg',
       'sessionTimes' => [
         'MON-TUES' => '-',
-        'WED-FRI' => '12',
-        'SAT-SUN' => '9'
+        'WED-FRI' => '12pm',
+        'SAT-SUN' => '9pm'
       ],
       'synopsis' => "Nell, Simon and their son Art host a yearly Christmas dinner at their country estate for their former school friends and their spouses.
       It is gradually revealed that there is an imminent environmental catastrophe and that this dinner will be their last night alive.",
@@ -88,7 +86,6 @@
 
   function movieRender($currentMovie) {
     global $movieObject;
-    echo "<h1>{$currentMovie}</h1>";
     foreach ($movieObject as $movieCode => $details) {
       if($movieCode == $currentMovie) {
       echo "<div class='movie-details-content'>
@@ -105,13 +102,13 @@
                   <h3>Session Times:</h3>
                   <div class='underline'></div>
                   <h3>Mon-Tues</h3>
-                  <p>{$details['sessionTimes']['MON-TUES']}pm
+                  <p>{$details['sessionTimes']['MON-TUES']}
                   </p>
                   <h3>Wed-Fri</h3>
-                  <p>{$details['sessionTimes']['WED-FRI']}pm
+                  <p>{$details['sessionTimes']['WED-FRI']}
                   </p>
                   <h3>Sat-Sun</h3>
-                  <p>{$details['sessionTimes']['SAT-SUN']}pm
+                  <p>{$details['sessionTimes']['SAT-SUN']}
                   </p>
                 </div>
               </div>
