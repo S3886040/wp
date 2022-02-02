@@ -7,6 +7,7 @@ const totalDiv = document.getElementById("totalAmount");
 // Here we set create our ticket selection object which will be updated as the customers
 // enters data into the booking form.
 let ticketSelection = { day: null };
+let dayCategory = "";
 // Prices object - data is taken from assignment 2 spec
 let prices = {
   discountedPrices: {
@@ -27,7 +28,8 @@ let prices = {
   },
 };
 
-let dayCategory = "";
+// Will return a boolean value if file is showing. And update the global dayCategory
+// Variable.
 function isShowing(day) {
   let showing;
   // Maybe the best use of a switch case condition block is for days of the week.
@@ -64,43 +66,36 @@ function isShowing(day) {
   return showing;
 }
 
-// This fuction will be called each time the day or ticket amount is updated.
-function calculatePrices() {
+// This function will be called each time the day or ticket amount is updated.
+function calculatePrices(day) {
   // function variables
-  let ticketType = "normalPrices";
+  let ticketType = "";
   let totalAmount = 0;
 
-  if (ticketSelection.day != null) {
-    // This loop will decide if the customers day selection will be calcualted
-    // as a discounted price or normal price taking into consideration the screening
-    // time.
-    // movieObjectjs is taken from the global scope spun up by tools.php's php2js function
-    for (var movie in movieObjectjs) {
-      if (movie == currentMovie) {
-        var time = movieObjectjs[movie].sessionTimes[dayCategory];
-        if (time.length == 4) {
-          time = time.slice(0, 2);
-        } else if (time.length == 3) {
-          time = time.slice(0, 1);
-        }
-        if (ticketSelection.day == "MON") {
-          ticketType = "discountedPrices";
-        } else if (
-          (dayCategory == "MON-TUES" || "WED-FRI") &&
-          time >= 12 &&
-          time > 6
-        ) {
-          ticketType = "discountedPrices";
-        } else {
-          ticketType = "normalPrices";
-        }
-      }
+  if (day != null) {
+    var time = movieObjectjs[currentMovie].sessionTimes[dayCategory];
+    if (time.length == 4) {
+      time = time.slice(0, 2);
+    } else if (time.length == 3) {
+      time = time.slice(0, 1);
+    }
+    if (day == "MON") {
+      ticketType = "discountedPrices";
+    } else if (
+      (dayCategory == "MON-TUES" || "WED-FRI") &&
+      time >= 12 &&
+      time > 6
+    ) {
+      ticketType = "discountedPrices";
+    } else {
+      ticketType = "normalPrices";
     }
 
     // This nested loop will calculate the price using price objects and selections
-    // then update the global variable totalAmount
-    for (var ticket in ticketSelection) {
-      for (var price in prices[ticketType]) {
+    // comparing ticket selections to the price list. If there is a match this amount
+    // will be added to the totalAmount
+    for (let ticket in ticketSelection) {
+      for (let price in prices[ticketType]) {
         if (ticket == price) {
           totalAmount += prices[ticketType][price] * ticketSelection[ticket];
         }
@@ -126,18 +121,19 @@ tixQty.forEach(function (item) {
     } else if (e.target.value <= 0) {
       e.target.value = "";
     }
+
     let seatTypeTemp = e.target.name.slice(6, 9);
     if (e.target.value != "") {
       ticketSelection[seatTypeTemp] = e.target.value;
       let showing = isShowing(ticketSelection.day);
       if (showing) {
-        calculatePrices();
+        calculatePrices(ticketSelection.day);
       } else {
         totalDiv.innerHTML = "";
       }
     } else {
       delete ticketSelection[seatTypeTemp];
-      calculatePrices();
+      calculatePrices(ticketSelection.day);
     }
   });
 });
@@ -145,19 +141,16 @@ tixQty.forEach(function (item) {
 notShowingModal = document.getElementById("not-showing-modal");
 dayButtons.forEach((item) => {
   item.addEventListener("click", function (e) {
-    if (e.target.value != "") {
-      ticketSelection.day = e.target.value;
-      let showing = isShowing(ticketSelection.day);
-      console.log(showing);
-      if (showing) {
-        calculatePrices();
-        notShowingModal.style.visibility = "hidden";
-        notShowingModal.innerHTML = "";
-      } else {
-        notShowingModal.style.visibility = "visible";
-        notShowingModal.innerHTML = "The film is not showing on this day";
-        totalDiv.innerHTML = "";
-      }
+    ticketSelection.day = e.target.value;
+    let showing = isShowing(ticketSelection.day);
+    if (showing) {
+      calculatePrices(ticketSelection.day);
+      notShowingModal.style.visibility = "hidden";
+      notShowingModal.innerHTML = "";
+    } else {
+      notShowingModal.style.visibility = "visible";
+      notShowingModal.innerHTML = "The film is not showing on this day";
+      totalDiv.innerHTML = "";
     }
   });
 });
@@ -172,7 +165,6 @@ const numberRegex = /^(\(04\)|04|\+614)( ?\d){8}$/;
 const emailRegex = /^[a-zA-Z0-9_\-.]+@[a-zA-Z0-9\-.]+$/;
 
 function regexTester(regex, input) {
-  console.log(input.value);
   let passed = false;
   if (!regex.test(input.value)) {
     input.classList.add("badInput");
@@ -196,40 +188,42 @@ emailInput.addEventListener("input", function () {
   regexTester(emailRegex, emailInput);
 });
 
-// On Submit //
+// On Form Submit //
 const formSubmit = document.getElementById("formSubmit");
 
+// Form submit will check all input fields and add feedback for the user
+// if there are fields missing or not passing validity checks
 formSubmit.addEventListener("click", function (e) {
   let ticketChosen = false;
-  for (var ticket in ticketSelection) {
-    for (var price in prices["normalPrices"]) {
-      if (ticket == price) {
-        ticketChosen = true;
-      }
+  tixQty.forEach(function (item) {
+    if (item.value > 0) {
+      ticketChosen = true;
     }
-  }
+  });
   if (!ticketChosen) {
     tixQty.forEach(function (item) {
       item.classList.add("badInput");
     });
   }
 
+  let showing;
   if (ticketSelection.day == null) {
     notShowingModal.style.visibility = "visible";
     notShowingModal.innerHTML = "Please Select a day";
+  } else {
+    showing = showing(ticketSelection.day);
   }
 
   regexTester(nameRegex, nameInput);
   regexTester(numberRegex, numberInput);
   regexTester(emailRegex, emailInput);
 
-  let showing = showing(ticketSelection.day);
   if (
     !ticketChosen ||
     ticketSelection.day == null ||
     !regexTester(numberRegex, numberInput) ||
     !regexTester(numberRegex, numberInput) ||
-    regexTester(emailRegex, emailInput) ||
+    !regexTester(emailRegex, emailInput) ||
     !showing
   ) {
     e.preventDefault();

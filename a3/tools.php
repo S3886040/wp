@@ -86,42 +86,39 @@
 
   function movieRender($currentMovie) {
     global $movieObject;
-    foreach ($movieObject as $movieCode => $details) {
-      if($movieCode == $currentMovie) {
-      echo "<div class='movie-details-content'>
+    echo "<div class='movie-details-content'>
               <div class='movie-details-header'>
-              <h1>{$details['title']}</h1>
-              <h3>Rating: {$details['rating']}</h3>
-              <div class='underline'></div>
+                <h1>{$movieObject[$currentMovie]['title']}</h1>
+                <h3>Rating: {$movieObject[$currentMovie]['rating']}</h3>
+                <div class='underline'></div>
               </div>
               <div class='flex-details'>
                 <div class='img-left'>
-                  <img src='../../media/{$details['poster']}' alt='{$details['title']} Movie Poster' style='width:300px;height:300px;'>
+                  <img src='../../media/{$movieObject[$currentMovie]['poster']}' alt='{$movieObject[$currentMovie]['title']} Movie Poster' style='width:300px;height:300px;'>
                 </div>
                 <div class='content-right'>
                   <h3>Session Times:</h3>
                   <div class='underline'></div>
                   <h3>Mon-Tues</h3>
-                  <p>{$details['sessionTimes']['MON-TUES']}
+                  <p>{$movieObject[$currentMovie]['sessionTimes']['MON-TUES']}
                   </p>
                   <h3>Wed-Fri</h3>
-                  <p>{$details['sessionTimes']['WED-FRI']}
+                  <p>{$movieObject[$currentMovie]['sessionTimes']['WED-FRI']}
                   </p>
                   <h3>Sat-Sun</h3>
-                  <p>{$details['sessionTimes']['SAT-SUN']}
+                  <p>{$movieObject[$currentMovie]['sessionTimes']['SAT-SUN']}
                   </p>
                 </div>
               </div>
               <h2>Synopsis</h2>
               <p>
-                {$details['synopsis']}
+                {$movieObject[$currentMovie]['synopsis']}
               </p>
-              <!-- iframe video source form Youtube {$details['trailer']}-->
-              <iframe width='420' height='315' src='{$details['trailer']}'>
+              <!-- iframe video source form Youtube {$movieObject[$currentMovie]['trailer']}-->
+              <iframe width='420' height='315' src='{$movieObject[$currentMovie]['trailer']}'>
               </iframe>
-            </div>";
-      }
-    }
+          </div>";
+
   }
 
   error_reporting( E_ERROR | E_WARNING | E_PARSE );
