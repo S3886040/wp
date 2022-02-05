@@ -59,6 +59,14 @@
     ],
   ];
 
+  function setChecked(&$str, $val) {
+  return ( isset($str) && $str == $val ? 'checked' : '' );
+  }
+
+  function unsetFB(&$str, $fallback = '') {
+  return ( isset($str) ? $str : $fallback );
+  }
+
   function php2js( $arr, $arrName ) {
   $arrJSON = json_encode($arr, JSON_PRETTY_PRINT);
   echo <<<"CDATA"

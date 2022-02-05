@@ -6,11 +6,11 @@ const totalDiv = document.getElementById("totalAmount");
 
 // Here we set create our ticket selection object which will be updated as the customers
 // enters data into the booking form.
-let ticketSelection = { day: null };
-let dayCategory = "";
+let ticketSelection = {};
+
 // Prices object - data is taken from assignment 2 spec
 let prices = {
-  discountedPrices: {
+  discount: {
     STA: 15.0,
     STP: 13.5,
     STC: 12.0,
@@ -18,7 +18,7 @@ let prices = {
     FCP: 22.5,
     FCC: 21.0,
   },
-  normalPrices: {
+  full: {
     STA: 20.5,
     STP: 18.0,
     STC: 16.5,
@@ -28,10 +28,32 @@ let prices = {
   },
 };
 
+var pricingPolicy = {
+  MON: { "12pm": "discount", "6pm": "discount", "9pm": "discount" },
+  TUE: { "12pm": "discount", "6pm": "full", "9pm": "full" },
+  WED: { "12pm": "discount", "6pm": "full", "9pm": "full" },
+  THU: { "12pm": "discount", "6pm": "full", "9pm": "full" },
+  FRI: { "12pm": "discount", "6pm": "full", "9pm": "full" },
+  SAT: { "12pm": "full", "3pm": "full", "6pm": "full", "9pm": "full" },
+  SUN: { "12pm": "full", "3pm": "full", "6pm": "full", "9pm": "full" },
+};
+
+function isFullDiscountedOrNotShowing(day, time) {
+  if (
+    typeof pricingPolicy[day] === "undefined" ||
+    typeof pricingPolicy[day][time] === "undefined"
+  ) {
+    return "not showing";
+  }
+
+  return pricingPolicy[day][time];
+}
+
 // Will return a boolean value if file is showing. And update the global dayCategory
 // Variable.
-function isShowing(day) {
-  let showing;
+function getShowingTime(day) {
+  let dayCategory = "";
+  let time;
   // Maybe the best use of a switch case condition block is for days of the week.
   // We must set the customers individual day selection into a format which relates
   // to the master object created by the php object data.
@@ -58,62 +80,40 @@ function isShowing(day) {
       dayCategory = "SAT-SUN";
       break;
   }
-  if (movieObjectjs[currentMovie]["sessionTimes"][dayCategory] == "-") {
-    showing = false;
-  } else {
-    showing = true;
-  }
-  return showing;
+  time = movieObjectjs[currentMovie]["sessionTimes"][dayCategory];
+  return time;
 }
 
 // This function will be called each time the day or ticket amount is updated.
-function calculatePrices(day) {
+function calculatePrices(ticketType) {
   // function variables
-  let ticketType = "";
   let totalAmount = 0;
-
-  if (day != null) {
-    var time = movieObjectjs[currentMovie].sessionTimes[dayCategory];
-    if (time.length == 4) {
-      time = time.slice(0, 2);
-    } else if (time.length == 3) {
-      time = time.slice(0, 1);
-    }
-    if (day == "MON") {
-      ticketType = "discountedPrices";
-    } else if (
-      (dayCategory == "MON-TUES" || "WED-FRI") &&
-      time >= 12 &&
-      time > 6
-    ) {
-      ticketType = "discountedPrices";
-    } else {
-      ticketType = "normalPrices";
-    }
-
-    // This nested loop will calculate the price using price objects and selections
-    // comparing ticket selections to the price list. If there is a match this amount
-    // will be added to the totalAmount
-    for (let ticket in ticketSelection) {
-      for (let price in prices[ticketType]) {
-        if (ticket == price) {
-          totalAmount += prices[ticketType][price] * ticketSelection[ticket];
-        }
+  // This nested loop will calculate the price using price objects and selections
+  // comparing ticket selections to the price list. If there is a match this amount
+  // will be added to the totalAmount
+  for (let ticket in ticketSelection) {
+    for (let price in prices[ticketType]) {
+      if (ticket == price) {
+        totalAmount += prices[ticketType][price] * ticketSelection[ticket];
       }
     }
-    // This will update our html page to inform the user
-    if (totalAmount > 0) {
-      totalDiv.innerHTML = "$" + totalAmount.toFixed(2);
-    } else {
-      totalDiv.innerHTML = "";
-    }
+  }
+  // This will update our html page to inform the user of the price
+  if (totalAmount > 0) {
+    totalDiv.innerHTML = "$" + totalAmount.toFixed(2);
+  } else {
+    totalDiv.innerHTML = "";
   }
 }
 
 tixQty.forEach(function (item) {
   item.addEventListener("input", function (e) {
+    let ticketChosen;
     tixQty.forEach(function (item) {
       item.classList.remove("badInput");
+      if (item.value > 0) {
+        ticketChosen = true;
+      }
     });
 
     if (e.target.value > 10) {
@@ -123,11 +123,16 @@ tixQty.forEach(function (item) {
     }
 
     let seatTypeTemp = e.target.name.slice(6, 9);
-    if (e.target.value != "") {
+    if (ticketChosen) {
       ticketSelection[seatTypeTemp] = e.target.value;
-      let showing = isShowing(ticketSelection.day);
-      if (showing) {
-        calculatePrices(ticketSelection.day);
+
+      let time = getShowingTime(ticketSelection.day);
+      let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
+        ticketSelection.day,
+        time
+      );
+      if (fullDiscountedOrNotShowing != "not showing") {
+        calculatePrices(fullDiscountedOrNotShowing);
       } else {
         totalDiv.innerHTML = "";
       }
@@ -142,9 +147,13 @@ notShowingModal = document.getElementById("not-showing-modal");
 dayButtons.forEach((item) => {
   item.addEventListener("click", function (e) {
     ticketSelection.day = e.target.value;
-    let showing = isShowing(ticketSelection.day);
-    if (showing) {
-      calculatePrices(ticketSelection.day);
+    let time = getShowingTime(ticketSelection.day);
+    let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
+      ticketSelection.day,
+      time
+    );
+    if (fullDiscountedOrNotShowing != "not showing") {
+      calculatePrices(fullDiscountedOrNotShowing);
       notShowingModal.style.visibility = "hidden";
       notShowingModal.innerHTML = "";
     } else {
@@ -160,7 +169,7 @@ const nameInput = document.getElementById("nameInput");
 const numberInput = document.getElementById("numberInput");
 const emailInput = document.getElementById("emailInput");
 
-const nameRegex = /^[a-zA-Z '.-]{1,255}$/;
+const nameRegex = /^[a-zA-Z '.-]{1,100}$/;
 const numberRegex = /^(\(04\)|04|\+614)( ?\d){8}$/;
 const emailRegex = /^[a-zA-Z0-9_\-.]+@[a-zA-Z0-9\-.]+$/;
 
@@ -193,41 +202,44 @@ const formSubmit = document.getElementById("formSubmit");
 
 // Form submit will check all input fields and add feedback for the user
 // if there are fields missing or not passing validity checks
-formSubmit.addEventListener("click", function (e) {
-  let ticketChosen = false;
-  tixQty.forEach(function (item) {
-    if (item.value > 0) {
-      ticketChosen = true;
-    }
-  });
-  if (!ticketChosen) {
-    tixQty.forEach(function (item) {
-      item.classList.add("badInput");
-    });
-  }
-
-  let showing;
-  if (ticketSelection.day == null) {
-    notShowingModal.style.visibility = "visible";
-    notShowingModal.innerHTML = "Please Select a day";
-  } else {
-    showing = showing(ticketSelection.day);
-  }
-
-  regexTester(nameRegex, nameInput);
-  regexTester(numberRegex, numberInput);
-  regexTester(emailRegex, emailInput);
-
-  if (
-    !ticketChosen ||
-    ticketSelection.day == null ||
-    !regexTester(numberRegex, numberInput) ||
-    !regexTester(numberRegex, numberInput) ||
-    !regexTester(emailRegex, emailInput) ||
-    !showing
-  ) {
-    e.preventDefault();
-  }
-});
+// formSubmit.addEventListener("click", function (e) {
+//   let ticketChosen = false;
+//   tixQty.forEach(function (item) {
+//     if (item.value > 0) {
+//       ticketChosen = true;
+//     }
+//   });
+//   if (!ticketChosen) {
+//     tixQty.forEach(function (item) {
+//       item.classList.add("badInput");
+//     });
+//   }
+//
+//   if (ticketSelection.day == null) {
+//     notShowingModal.style.visibility = "visible";
+//     notShowingModal.innerHTML = "Please Select a day";
+//   }
+//
+//   regexTester(nameRegex, nameInput);
+//   regexTester(numberRegex, numberInput);
+//   regexTester(emailRegex, emailInput);
+//
+//   let showing = getShowingTime(ticketSelection.day);
+//   let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
+//     ticketSelection.day,
+//     time
+//   );
+//
+//   if (
+//     !ticketChosen ||
+//     ticketSelection.day == null ||
+//     !regexTester(numberRegex, numberInput) ||
+//     !regexTester(numberRegex, numberInput) ||
+//     !regexTester(emailRegex, emailInput) ||
+//     showing == "not showing"
+//   ) {
+//     e.preventDefault();
+//   }
+// });
 
 ////////////////////////////
