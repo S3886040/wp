@@ -38,6 +38,43 @@
             </ul>
           </nav>";
 
+  }
+
+  function movieRender($currentMovie) {
+    global $movieObject;
+    echo "<div class='movie-details-content'>
+              <div class='movie-details-header'>
+                <h1>{$movieObject[$currentMovie]['title']}</h1>
+                <h3>Rating: {$movieObject[$currentMovie]['rating']}</h3>
+                <div class='underline'></div>
+              </div>
+              <div class='flex-details'>
+                <div class='img-left'>
+                  <img src='../../media/{$movieObject[$currentMovie]['poster']}' alt='{$movieObject[$currentMovie]['title']} Movie Poster' style='width:300px;height:300px;'>
+                </div>
+                <div class='content-right'>
+                  <h3>Session Times:</h3>
+                  <div class='underline'></div>
+                  <h3>Mon-Tues</h3>
+                  <p>{$movieObject[$currentMovie]['sessionTimes']['MON-TUES']}
+                  </p>
+                  <h3>Wed-Fri</h3>
+                  <p>{$movieObject[$currentMovie]['sessionTimes']['WED-FRI']}
+                  </p>
+                  <h3>Sat-Sun</h3>
+                  <p>{$movieObject[$currentMovie]['sessionTimes']['SAT-SUN']}
+                  </p>
+                </div>
+              </div>
+              <h2>Synopsis</h2>
+              <p>
+                {$movieObject[$currentMovie]['synopsis']}
+              </p>
+              <!-- iframe video source form Youtube {$movieObject[$currentMovie]['trailer']}-->
+              <iframe width='420' height='315' src='{$movieObject[$currentMovie]['trailer']}'>
+              </iframe>
+          </div>";
+
   }  
 
 ?>

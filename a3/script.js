@@ -6,8 +6,8 @@ const totalDiv = document.getElementById("totalAmount");
 
 // Here we set create our ticket selection object which will be updated as the customers
 // enters data into the booking form.
-let ticketSelection = {};
-
+// The object is initated by the PHP version if there is data saved for the user on reload.
+let ticketSelection = ticketSelectionPHP;
 // Prices object - data is taken from assignment 2 spec
 let prices = {
   discount: {
@@ -202,44 +202,44 @@ const formSubmit = document.getElementById("formSubmit");
 
 // Form submit will check all input fields and add feedback for the user
 // if there are fields missing or not passing validity checks
-// formSubmit.addEventListener("click", function (e) {
-//   let ticketChosen = false;
-//   tixQty.forEach(function (item) {
-//     if (item.value > 0) {
-//       ticketChosen = true;
-//     }
-//   });
-//   if (!ticketChosen) {
-//     tixQty.forEach(function (item) {
-//       item.classList.add("badInput");
-//     });
-//   }
-//
-//   if (ticketSelection.day == null) {
-//     notShowingModal.style.visibility = "visible";
-//     notShowingModal.innerHTML = "Please Select a day";
-//   }
-//
-//   regexTester(nameRegex, nameInput);
-//   regexTester(numberRegex, numberInput);
-//   regexTester(emailRegex, emailInput);
-//
-//   let showing = getShowingTime(ticketSelection.day);
-//   let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
-//     ticketSelection.day,
-//     time
-//   );
-//
-//   if (
-//     !ticketChosen ||
-//     ticketSelection.day == null ||
-//     !regexTester(numberRegex, numberInput) ||
-//     !regexTester(numberRegex, numberInput) ||
-//     !regexTester(emailRegex, emailInput) ||
-//     showing == "not showing"
-//   ) {
-//     e.preventDefault();
-//   }
-// });
+formSubmit.addEventListener("click", function (e) {
+  let ticketChosen = false;
+  tixQty.forEach(function (item) {
+    if (item.value > 0) {
+      ticketChosen = true;
+    }
+  });
+  if (!ticketChosen) {
+    tixQty.forEach(function (item) {
+      item.classList.add("badInput");
+    });
+  }
+
+  if (ticketSelection.day == null) {
+    notShowingModal.style.visibility = "visible";
+    notShowingModal.innerHTML = "Please Select a day";
+  }
+
+  regexTester(nameRegex, nameInput);
+  regexTester(numberRegex, numberInput);
+  regexTester(emailRegex, emailInput);
+
+  let showing = getShowingTime(ticketSelection.day);
+  let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
+    ticketSelection.day,
+    time
+  );
+
+  if (
+    !ticketChosen ||
+    ticketSelection.day == null ||
+    !regexTester(numberRegex, numberInput) ||
+    !regexTester(numberRegex, numberInput) ||
+    !regexTester(emailRegex, emailInput) ||
+    showing == "not showing"
+  ) {
+    e.preventDefault();
+  }
+});
 
 ////////////////////////////
