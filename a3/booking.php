@@ -5,23 +5,27 @@
   header("Location: index.php"); // redirect if movie code invalid
   }
   $formErrors = [];
-  $name = '';
   if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $_POST['user']['name'] = htmlentities(($_POST['user']['name']), ENT_QUOTES);
-    $name = unsetFB($_POST['user']['name']);
-    $_POST['user']['mobile'] = htmlentities($_POST['user']['mobile'], ENT_QUOTES);
-    $mobile = unsetFB($_POST['user']['mobile']);
-    $_POST['user']['email'] = htmlentities($email = unsetFB($_POST['user']['email']), ENT_QUOTES);
-    $_POST['seats']['STA'] = htmlentities($sta = unsetFB($_POST['seats']['STA']), ENT_QUOTES);
-    $_POST['seats']['STP'] = htmlentities($stp = unsetFB($_POST['seats']['STP']), ENT_QUOTES);
-    $_POST['seats']['STC'] = htmlentities($stc = unsetFB($_POST['seats']['STC']), ENT_QUOTES);
-    $_POST['seats']['FCA'] = htmlentities($fca = unsetFB($_POST['seats']['FCA']), ENT_QUOTES);
-    $_POST['seats']['FCP'] = htmlentities($fcp = unsetFB($_POST['seats']['FCP']), ENT_QUOTES);
-    $_POST['seats']['FCC'] = htmlentities($fcc = unsetFB($_POST['seats']['FCC']), ENT_QUOTES);
-
     include_once('post-validation.php');
     $formErrors = validateBooking();
+    if (count($formErrors) == 0) {
+      $_SESSION = $_POST;
+      print_r($_SESSION);
+      //header("Location: receipt.php");
+    }
   };
+
+  $_POST['seats']['STA'] = unsetFB($_POST['seats']['STA']);
+  $_POST['seats']['STP'] = unsetFB($_POST['seats']['STP']);
+  $_POST['seats']['STC'] = unsetFB($_POST['seats']['STC']);
+  $_POST['seats']['FCA'] = unsetFB($_POST['seats']['FCA']);
+  $_POST['seats']['FCP'] = unsetFB($_POST['seats']['FCP']);
+  $_POST['seats']['FCC'] = unsetFB($_POST['seats']['FCC']);
+
+  $_POST['user']['name'] = unsetFB($_POST['user']['name']);
+  $_POST['user']['email'] = unsetFB($_POST['user']['email']);
+  $_POST['user']['mobile'] = unsetFB($_POST['user']['mobile']);
+
 
   $currentMovie = unsetFB($_GET['movie']);
   $nameError = '';
@@ -42,6 +46,7 @@
     $seatsError = ' <span style="color:red">'.unsetFB($formErrors['seats']).'</span>';
   }
 
+  // This will populate an array the js file can use if loaded with pre populated datd
   $ticketSelectionPHP = [];
   foreach ($_POST['seats'] as $seat => $amount) {
     if($amount >= 1) {
@@ -72,21 +77,21 @@
               <legend>Standard Seats</legend>
               <div class='underline'></div>
               <label for='STA'>Adult</label>
-              <input id='STA' type='number' min='1' max='10' name=seats[STA] value="<?= $sta ?>"/><br />
+              <input id='STA' type='number' min='1' max='10' name=seats[STA] value="<?= $_POST['seats']['STA'] = htmlentities($_POST['seats']['STA'], ENT_QUOTES); ?>"/><br />
               <label for='STP'>Concession</label>
-              <input id='STP' type='number' min='1' max='10' name=seats[STP] value="<?= $stp ?>"/><br />
+              <input id='STP' type='number' min='1' max='10' name=seats[STP] value="<?= $_POST['seats']['STP'] = htmlentities($_POST['seats']['STP'], ENT_QUOTES); ?>"/><br />
               <label for='STC'>Child</label>
-              <input id='STC' type='number' min='1' max='10' name=seats[STC] value="<?= $stc ?>"/><br />
+              <input id='STC' type='number' min='1' max='10' name=seats[STC] value="<?= $_POST['seats']['STC'] = htmlentities($_POST['seats']['STC'], ENT_QUOTES); ?>"/><br />
             </fieldset>
             <fieldset class='seat-set'>
               <legend>First Class Seats</legend>
               <div class='underline'></div>
               <label for='FCA'>Adult</label>
-              <input id='FCA' type='number' min='1' max='10' name=seats[FCA] value="<?= $fca ?>"/><br />
+              <input id='FCA' type='number' min='1' max='10' name=seats[FCA] value="<?= $_POST['seats']['FCA'] = htmlentities($_POST['seats']['FCA'], ENT_QUOTES); ?>"/><br />
               <label for='FCP'>Concession</label>
-              <input id='FCP' type='number' min='1' max='10' name=seats[FCP] value="<?= $fcp ?>"/><br />
+              <input id='FCP' type='number' min='1' max='10' name=seats[FCP] value="<?= $_POST['seats']['FCP'] = htmlentities($_POST['seats']['FCP'], ENT_QUOTES); ?>"/><br />
               <label for='FCC'>Child</label>
-              <input id='FCC' type='number' min='1' max='10' name=seats[FCC] value="<?= $fcc ?>"/><br />
+              <input id='FCC' type='number' min='1' max='10' name=seats[FCC] value="<?= $_POST['seats']['FCC'] = htmlentities($_POST['seats']['FCC'], ENT_QUOTES); ?>"/><br />
               <?= $seatsError ?>
             </fieldset>
             <fieldset class='day-set'>
@@ -106,11 +111,11 @@
               <legend>Your Details</legend>
               <div class='underline'></div>
               <label for='nameInput'>Your Name</label><br />
-              <input id="nameInput" type='text' name=user[name]  value="<?= $name ?>"/><?= $nameError ?><br />
+              <input id="nameInput" type='text' name=user[name]  value="<?= $_POST['user']['name'] = htmlentities(($_POST['user']['name']), ENT_QUOTES);?>"/><?= $nameError ?><br />
               <label for='emailInput'>Email Address</label><br />
-              <input id='emailInput' type='email' name=user[email] value="<?= $email ?>" required/><?= $emailError ?><br />
+              <input id='emailInput' type='email' name=user[email] value="<?= $_POST['user']['email'] = htmlentities($_POST['user']['email'], ENT_QUOTES); ?>" required/><?= $emailError ?><br />
               <label for='numberInput'>Mobile Number</label><br />
-              <input id="numberInput" type='text' name=user[mobile] value="<?= $mobile ?>" /><?= $mobileError ?><br />
+              <input id="numberInput" type='text' name=user[mobile] value="<?= $_POST['user']['mobile'] = htmlentities($_POST['user']['mobile'], ENT_QUOTES); ?>" /><?= $mobileError ?><br />
               <span>Total Amount: </span>
               <div id="totalAmount"></div>
             </fieldset>

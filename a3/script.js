@@ -32,7 +32,7 @@ var pricingPolicy = {
   MON: { "12pm": "discount", "6pm": "discount", "9pm": "discount" },
   TUE: { "12pm": "discount", "6pm": "full", "9pm": "full" },
   WED: { "12pm": "discount", "6pm": "full", "9pm": "full" },
-  THU: { "12pm": "discount", "6pm": "full", "9pm": "full" },
+  THURS: { "12pm": "discount", "6pm": "full", "9pm": "full" },
   FRI: { "12pm": "discount", "6pm": "full", "9pm": "full" },
   SAT: { "12pm": "full", "3pm": "full", "6pm": "full", "9pm": "full" },
   SUN: { "12pm": "full", "3pm": "full", "6pm": "full", "9pm": "full" },
@@ -152,6 +152,7 @@ dayButtons.forEach((item) => {
       ticketSelection.day,
       time
     );
+
     if (fullDiscountedOrNotShowing != "not showing") {
       calculatePrices(fullDiscountedOrNotShowing);
       notShowingModal.style.visibility = "hidden";
@@ -227,7 +228,7 @@ formSubmit.addEventListener("click", function (e) {
   let showing = getShowingTime(ticketSelection.day);
   let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
     ticketSelection.day,
-    time
+    showing
   );
 
   if (
@@ -236,10 +237,29 @@ formSubmit.addEventListener("click", function (e) {
     !regexTester(numberRegex, numberInput) ||
     !regexTester(numberRegex, numberInput) ||
     !regexTester(emailRegex, emailInput) ||
-    showing == "not showing"
+    fullDiscountedOrNotShowing == "not showing"
   ) {
     e.preventDefault();
   }
 });
 
 ////////////////////////////
+//On load Event to calculate with pre loaded user input
+window.addEventListener("load", function (e) {
+  dayButtons.forEach((item) => {
+    console.log(item.checked);
+    if (item.checked) {
+      ticketSelection.day = item.value;
+    }
+  });
+  let time = getShowingTime(ticketSelection.day);
+  let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
+    ticketSelection.day,
+    time
+  );
+  if (fullDiscountedOrNotShowing != "not showing") {
+    calculatePrices(fullDiscountedOrNotShowing);
+  }
+});
+
+////////

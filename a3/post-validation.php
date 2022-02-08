@@ -5,10 +5,6 @@
    If the array is empty, then no errors were generated
 */
 
-
-
-
-
 function validateBooking() {
   $errors = []; // new empty array to return error messages
   $nameRegex = "/^[a-zA-Z '.-]{1,100}$/";
