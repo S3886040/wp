@@ -9,8 +9,7 @@
     include_once('post-validation.php');
     $formErrors = validateBooking();
     if (count($formErrors) == 0) {
-      $_SESSION = $_POST;
-      print_r($_SESSION);
+      //$_SESSION = $_POST;
       //header("Location: receipt.php");
     }
   };
@@ -26,6 +25,9 @@
   $_POST['user']['email'] = unsetFB($_POST['user']['email']);
   $_POST['user']['mobile'] = unsetFB($_POST['user']['mobile']);
 
+  $_POST['day'] = unsetFB($_POST['day']);
+
+  $_POST['day'] =  htmlentities($_POST['day'], ENT_QUOTES);
 
   $currentMovie = unsetFB($_GET['movie']);
   $nameError = '';
@@ -46,7 +48,7 @@
     $seatsError = ' <span style="color:red">'.unsetFB($formErrors['seats']).'</span>';
   }
 
-  // This will populate an array the js file can use if loaded with pre populated datd
+  // This will populate an array the js file can use if loaded with pre populated data
   $ticketSelectionPHP = [];
   foreach ($_POST['seats'] as $seat => $amount) {
     if($amount >= 1) {
@@ -60,9 +62,9 @@
 
 <!DOCTYPE html>
 <?= headRender("Lunardo Booking Page") ?>
-
   <body>
-    <?= headerNavRender() ?>
+    <?= headerRender() ?>
+    <?= navRender() ?>
     <main>
       <section id='movie-details'>
         <?= movieRender($currentMovie) ?>
@@ -97,13 +99,13 @@
             <fieldset class='day-set'>
               <legend>Day Sessions</legend>
               <div class='underline'></div>
-              <input type=radio id='mon' name='day' value='MON' <?= setChecked($_POST['day'],'MON') ?> /><label for='mon'> Monday</label>
-              <input type=radio id='tues' name='day' value='TUES' <?= setChecked($_POST['day'],'TUES') ?> /> <label for='tues'>Tuesday</label>
-              <input type=radio id='wed' name='day' value='WED' <?= setChecked($_POST['day'],'WED') ?> /> <label for='wed'>Wednesday</label>
-              <input type=radio id='thurs' name='day' value='THURS' <?= setChecked($_POST['day'],'THURS') ?> /> <label for='thurs'>Thursday</label>
-              <input type=radio id='fri' name='day' value='FRI' <?= setChecked($_POST['day'],'FRI') ?> /> <label for='fri'>Friday</label>
-              <input type=radio id='sat' name='day' value='SAT' <?= setChecked($_POST['day'],'SAT') ?> /> <label for='sat'>Saturday</label>
-              <input type=radio id='sun' name='day' value='SUN' <?= setChecked($_POST['day'],'SUN') ?> /> <label for='sun'>Sunday</label>
+              <input type=radio id='mon' name='day' value='MON' <?= setChecked($_POST['day'],'MON')?> /><label for='mon'> Monday</label>
+              <input type=radio id='tues' name='day' value='TUES' <?=setChecked($_POST['day'],'TUES')?> /> <label for='tues'>Tuesday</label>
+              <input type=radio id='wed' name='day' value='WED' <?=setChecked($_POST['day'],'WED') ?> /> <label for='wed'>Wednesday</label>
+              <input type=radio id='thurs' name='day' value='THURS' <?=setChecked($_POST['day'],'THURS') ?>/> <label for='thurs'>Thursday</label>
+              <input type=radio id='fri' name='day' value='FRI' <?=setChecked($_POST['day'],'FRI') ?>/> <label for='fri'>Friday</label>
+              <input type=radio id='sat' name='day' value='SAT'  <?= setChecked($_POST['day'],'SAT') ?>/> <label for='sat'>Saturday</label>
+              <input type=radio id='sun' name='day' value='SUN' <?=setChecked($_POST['day'],'SUN') ?>/> <label for='sun'>Sunday</label>
               <div id='not-showing-modal' <?= $dayErrorStyle ?>><?= $dayErrorValue ?></div>
             </fieldset>
 
@@ -124,19 +126,7 @@
         </div>
       </section>
     </main>
-    <footer>
-      <div>
-        Contact Info-<br>
-        Email: contact@lunardo-cinema.com.au<br>
-        Phone: (03) 9788 7883<br>
-        Address: 34 cresent st Mt Martha, 3467
-      </div>
-      <div>&copy;<script>
-          document.write(new Date().getFullYear());
-        </script> Justin Healy, s3886040.<a href='https://github.com/S3886040/wp/tree/main/a2'>GitHub</a>. Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
-      <div>Disclaimer: This website is not a real website and is being developed as part of a School of Science Web Programming course at RMIT University in Melbourne, Australia.</div>
-      <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
-    </footer>
+    <?= footerRender() ?>
     <script src='script.js'></script>
     <aside id="debug">
       <hr>

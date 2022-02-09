@@ -30,7 +30,7 @@ let prices = {
 
 var pricingPolicy = {
   MON: { "12pm": "discount", "6pm": "discount", "9pm": "discount" },
-  TUE: { "12pm": "discount", "6pm": "full", "9pm": "full" },
+  TUES: { "12pm": "discount", "6pm": "full", "9pm": "full" },
   WED: { "12pm": "discount", "6pm": "full", "9pm": "full" },
   THURS: { "12pm": "discount", "6pm": "full", "9pm": "full" },
   FRI: { "12pm": "discount", "6pm": "full", "9pm": "full" },
@@ -234,7 +234,7 @@ formSubmit.addEventListener("click", function (e) {
   if (
     !ticketChosen ||
     ticketSelection.day == null ||
-    !regexTester(numberRegex, numberInput) ||
+    !regexTester(nameRegex, nameInput) ||
     !regexTester(numberRegex, numberInput) ||
     !regexTester(emailRegex, emailInput) ||
     fullDiscountedOrNotShowing == "not showing"
@@ -244,7 +244,7 @@ formSubmit.addEventListener("click", function (e) {
 });
 
 ////////////////////////////
-//On load Event to calculate with pre loaded user input
+//On load Event to calculate prices with pre loaded user input
 window.addEventListener("load", function (e) {
   dayButtons.forEach((item) => {
     console.log(item.checked);

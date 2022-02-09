@@ -6,7 +6,8 @@
 <!DOCTYPE html>
 <?= headRender("Assignment 3") ?>
   <body>
-    <?= headerNavRender() ?>
+    <?= headerRender() ?>
+    <?= navRender() ?>
     <main>
 
       <section id='home-content'>
@@ -246,20 +247,7 @@
         </div>
       </section>
     </main>
-
-    <footer>
-      <div>
-        Contact Info-<br>
-        Email: contact@lunardo-cinema.com.au<br>
-        Phone: (03) 9788 7883<br>
-        Address: 34 cresent st Mt Martha, 3467
-      </div>
-      <div>&copy;<script>
-          document.write(new Date().getFullYear());
-        </script> Justin Healy, s3886040.<a href='https://github.com/S3886040/wp/tree/main/a2'>GitHub</a>. Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
-      <div>Disclaimer: This website is not a real website and is being developed as part of a School of Science Web Programming course at RMIT University in Melbourne, Australia.</div>
-      <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
-    </footer>
+    <?= footerRender() ?>
     <script src='scroll.js'></script>
   </body>
 

@@ -20,24 +20,25 @@
 
   }
 
-  function headerNavRender() {
+  function headerRender() {
     echo "<header id='home'>
             <div class='header-content-wrapper'>
               <h1>Lunardo</h1>
               <!-- Sourced from https://vector.me/browse/690940/camera_icon -->
               <img src='../../media/camera_icon.svg' class='logo' alt='Lunardo Icon'>
             </div>
-          </header>
+          </header>";
+  }
 
-          <nav class='nav-bar'>
-            <ul class='nav-list'>
-              <li class='nav-item'><a href='index.php#home'>Home</a></li>
-              <li class='nav-item'><a href='index.php#about-us'>About Us</a></li>
-              <li class='nav-item'><a href='index.php#seats-prices'>Seats/Prices</a></li>
-              <li class='nav-item'><a href='index.php#now-showing'>Now Showing</a></li>
-            </ul>
-          </nav>";
-
+  function navRender() {
+    echo "<nav class='nav-bar'>
+      <ul class='nav-list'>
+        <li class='nav-item'><a href='index.php#home'>Home</a></li>
+        <li class='nav-item'><a href='index.php#about-us'>About Us</a></li>
+        <li class='nav-item'><a href='index.php#seats-prices'>Seats/Prices</a></li>
+        <li class='nav-item'><a href='index.php#now-showing'>Now Showing</a></li>
+      </ul>
+    </nav>";
   }
 
   function movieRender($currentMovie) {
@@ -75,6 +76,25 @@
               </iframe>
           </div>";
 
-  }  
+  }
+
+  function footerRender() {
+  echo
+    "<footer>
+      <div>
+        Contact Info-<br>
+        Email: contact@lunardo-cinema.com.au<br>
+        Phone: (03) 9788 7883<br>
+        Address: 34 cresent st Mt Martha, 3467
+      </div>
+      <div>&copy;<script>
+          document.write(new Date().getFullYear());
+        </script> Justin Healy, s3886040.<a href='https://github.com/S3886040/wp/tree/main/a2'>GitHub</a>. Last modified " . date('Y F d  H:i', filemtime($_SERVER['SCRIPT_FILENAME'])) . ".</div>
+      <div>Disclaimer: This website is not a real website and is being developed as part of a School of Science Web Programming course at RMIT University in Melbourne, Australia.</div>
+      <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
+    </footer>";
+
+  }
+
 
 ?>
