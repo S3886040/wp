@@ -9,8 +9,9 @@
     include_once('post-validation.php');
     $formErrors = validateBooking();
     if (count($formErrors) == 0) {
-      //$_SESSION = $_POST;
-      //header("Location: receipt.php");
+      $_SESSION['cart'] = $_POST;
+      $_SESSION['cart']['time'] = getShowingTime($_POST['day']);
+      header("Location: receipt.php");
     }
   };
 
@@ -61,6 +62,7 @@
 ?>
 
 <!DOCTYPE html>
+<html lang='en'>
 <?= headRender("Lunardo Booking Page") ?>
   <body>
     <?= headerRender() ?>
