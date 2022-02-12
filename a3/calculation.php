@@ -57,6 +57,7 @@ function calculatePrices($seats, $day, $time) {
       $totals['$' . $seat] = 0;
     }
   };
+  $total['finalTotal'] = number_format($total['finalTotal'], 2);
   $total['GST'] = number_format($total['finalTotal'] / 11, 2);
   return $totals + $total;
 }

@@ -246,6 +246,7 @@ formSubmit.addEventListener("click", function (e) {
 ////////////////////////////
 //On load Event to calculate prices with pre loaded user input
 window.addEventListener("load", function (e) {
+  ticketSelection = ticketSelectionPHP;
   dayButtons.forEach((item) => {
     console.log(item.checked);
     if (item.checked) {

@@ -11,6 +11,7 @@
     if (count($formErrors) == 0) {
       $_SESSION['cart'] = $_POST;
       $_SESSION['cart']['time'] = getShowingTime($_POST['day']);
+      $_SESSION['cart']['bookingTime'] = date('d/m/y h:i');
       header("Location: receipt.php");
     }
   };

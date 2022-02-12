@@ -10,6 +10,9 @@ function validateBooking() {
   $nameRegex = "/^[a-zA-Z '.-]{1,100}$/";
   $numberRegex = "/^(\(04\)|04|\+614)( ?\d){8}$/";
   // Name checks
+  if($_POST['movie'] == '') {
+    $errors['movie'] = "Error, no movie selected";
+  }
   if ($_POST['user']['name'] == '') {
     $errors['user']['name'] = "Name can't be blank";
   } else if(!preg_match($nameRegex, $_POST['user']['name'])) {

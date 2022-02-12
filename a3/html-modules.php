@@ -92,7 +92,30 @@
       <div>Disclaimer: This website is not a real website and is being developed as part of a School of Science Web Programming course at RMIT University in Melbourne, Australia.</div>
       <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
     </footer>";
+  }
 
+  $ticketObject = [
+    'STA' => 'Standard Seating Adult',
+    'STP' => 'Standard Seating Concession',
+    'STC' => 'Standard Seating Child',
+    'FCA' => 'First Class Seating Adult',
+    'FCP' => 'First Class Seating Adult',
+    'FCC' => 'First Class Seating Adult',
+  ];
+
+  function printTicketDetails($tickets) {
+    global $ticketObject;
+    foreach ($tickets as $seat => $amount) {
+      if((int)$amount > 0) {
+        echo "<p>{$ticketObject[$seat]} x {$amount}</p>";
+      }
+    }
+  }
+
+  function printEmptyLines($lineAmount) {
+    for ($i=0; $i < $lineAmount; $i++) {
+      echo "<p><br></p>";
+    }
   }
 
 

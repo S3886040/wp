@@ -32,7 +32,7 @@ span {
 }
 .underline {
   padding-bottom: 10px;
-  max-width: 150px;
+  width: 150px;
   border-bottom: #fb8122 solid 2px;
 }
 /*Header and Nav bar styles go here*/
@@ -97,6 +97,9 @@ div#filter {
 }
 #home-content .button:hover {
   box-shadow: 2px 2px rgba(255, 255, 255, 0.7);
+}
+#home-content h1 {
+  font-size: 30px;
 }
 .button {
   text-decoration: none;
@@ -439,6 +442,54 @@ input[type="submit"] {
   height: 20px;
   box-shadow: 0 0 3px #1e1717;
 }
+/*Styles for #receipt-section section*/
+#receipt-header {
+  padding-top: 50px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+#receipt-header h1 {
+  font-size: 40px;
+}
+#receipt-header .underline {
+  width: 300px;
+}
+#receipt {
+  padding-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding-left: 30vh;
+  padding-right: 30vh;
+}
+.receipt-movieInfo-column img {
+  max-width: 100%;
+  max-height: 80%;
+  object-fit: scale-down;
+}
+
+.receipt-movieInfo-column h1,
+.receipt-movieInfo-column p {
+  padding-left: 50px;
+}
+.receipt-details .underline {
+  width: 100%;
+  grid-auto-flow: unset;
+}
+.receipt-details h1 {
+  grid-auto-flow: unset;
+}
+.receipt-details-column {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.invoice-details {
+  font-weight: bold;
+  text-align: right;
+  padding-right: 20px;
+}
+
 /*BreakPoints for screen sizes*/
 /*Medium size screens*/
 @media only screen and (max-width: 768px) {
