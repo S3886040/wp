@@ -18,13 +18,13 @@
     $totals
   );
   $details = $_SESSION['cart'];
-  session_unset();
+  //session_unset();
 
   $ticketTypeCount = ticketTypeCount($details['seats']);
   $priceExGST = $totals['finalTotal'] - $totals['GST'];
 
   $filename = 'bookings.txt';
-  chmod($filename, 606);
+  chmod('bookings.txt', 0606);
   if( ($fp = fopen($filename, "a")) && flock($fp, LOCK_EX) !== false ) {;
     fputcsv($fp, $cells, "\t");
     flock($fp, LOCK_UN);
