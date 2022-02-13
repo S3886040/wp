@@ -99,14 +99,14 @@
     'STP' => 'Standard Seating Concession',
     'STC' => 'Standard Seating Child',
     'FCA' => 'First Class Seating Adult',
-    'FCP' => 'First Class Seating Adult',
-    'FCC' => 'First Class Seating Adult',
+    'FCP' => 'First Class Seating Concession',
+    'FCC' => 'First Class Seating Child',
   ];
 
   function printTicketDetails($tickets) {
     global $ticketObject;
     foreach ($tickets as $seat => $amount) {
-      if((int)$amount > 0) {
+      if($amount > 0) {
         echo "<p>{$ticketObject[$seat]} x {$amount}</p>";
       }
     }
@@ -116,6 +116,61 @@
     for ($i=0; $i < $lineAmount; $i++) {
       echo "<p><br></p>";
     }
+  }
+
+  function tickets($details) {
+    global $ticketObject;
+    global $movieObject;
+    foreach ($details['seats'] as $seat => $amount) {
+      if($amount) {
+        for ($i=0; $i < $amount; $i++) {
+          echo "<div class='ticket'>
+                  <div class='ticket-main'>
+                    <h2>Lunardo Cinema</h2>
+                    <h3>{$movieObject[$details['movie']]['title']} {$movieObject[$details['movie']]['rating']}</h3>
+                    <p>{$details['day']} {$details['time']} </p>
+                    <p>Purchased: {$details['bookingTime']}</p>
+                    <p>{$ticketObject[$seat]}</p>
+                  </div>
+                  <div class='ticket-icon'>
+                    <img src='../../media/camera_icon.svg' alt='camera icon' class='ticket-icon'>
+                  </div>
+                  <div class='ticket-edge'>
+                    <h2>Lunardo Cinema</h2>
+                    <h3>{$movieObject[$details['movie']]['title']} {$movieObject[$details['movie']]['rating']}</h3>
+                    <p>{$details['day']} {$details['time']}</p>
+                    <p>Purchased: {$details['bookingTime']}</p>
+                    <p>{$ticketObject[$seat]}</p>
+                  </div>
+                </div>";
+        }
+
+      }
+    }
+  }
+
+  function debugModule() {
+   echo "<aside id='debug'>
+     <hr>
+     <h3>Debug Area</h3>
+     <pre>
+     GET Contains:";
+     print_r($_GET);
+     echo "POST Contains:";
+     print_r($_POST);
+     echo "SESSION Contains:";
+     print_r($_SESSION);
+     echo "</pre>
+     </aside>";
+  }
+
+  function printMyCode() {
+  $allLinesOfCode = file($_SERVER['SCRIPT_FILENAME']);
+  echo "<pre id='myCode'><ol>";
+  foreach($allLinesOfCode as $oneLineOfCode) {
+    echo "<li>" .rtrim(htmlentities($oneLineOfCode)) . "</li>";
+  }
+  echo "</ol></pre>";
   }
 
 

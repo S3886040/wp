@@ -1,9 +1,9 @@
 <?php
 $pricingPolicy = [
   'MON'=> [ "12pm"=> "discount", "6pm"=> "discount", "9pm"=> "discount" ],
-  'TUE'=> [ "12pm"=> "discount", "6pm"=> "full", "9pm"=> "full" ],
+  'TUES'=> [ "12pm"=> "discount", "6pm"=> "full", "9pm"=> "full" ],
   'WED'=> [ "12pm"=> "discount", "6pm"=> "full", "9pm"=> "full" ],
-  'THU'=> [ "12pm"=> "discount", "6pm"=> "full", "9pm"=> "full" ],
+  'THURS'=> [ "12pm"=> "discount", "6pm"=> "full", "9pm"=> "full" ],
   'FRI'=> [ "12pm"=> "discount", "6pm"=> "full", "9pm"=> "full" ],
   'SAT'=> [ "12pm"=> "full", "3pm"=> "full", "6pm"=> "full", "9pm"=> "full" ],
   'SUN'=> [ "12pm"=> "full", "3pm"=> "full", "6pm"=> "full", "9pm"=> "full" ],

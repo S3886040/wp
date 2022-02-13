@@ -11,7 +11,8 @@
     if (count($formErrors) == 0) {
       $_SESSION['cart'] = $_POST;
       $_SESSION['cart']['time'] = getShowingTime($_POST['day']);
-      $_SESSION['cart']['bookingTime'] = date('d/m/y h:i');
+      date_default_timezone_set('Australia/Melbourne');
+      $_SESSION['cart']['bookingTime'] = date('l d/m/y G:i');
       header("Location: receipt.php");
     }
   };
@@ -49,15 +50,6 @@
     }
     $seatsError = ' <span style="color:red">'.unsetFB($formErrors['seats']).'</span>';
   }
-
-  // This will populate an array the js file can use if loaded with pre populated data
-  $ticketSelectionPHP = [];
-  foreach ($_POST['seats'] as $seat => $amount) {
-    if($amount >= 1) {
-      $ticketSelectionPHP[$seat] = $amount;
-    }
-  }
-  php2js($ticketSelectionPHP, 'ticketSelectionPHP');
   php2js($movieObject, 'movieObjectjs');
   php2js($currentMovie, 'currentMovie');
 ?>
@@ -131,19 +123,8 @@
     </main>
     <?= footerRender() ?>
     <script src='script.js'></script>
-    <aside id="debug">
-      <hr>
-      <h3>Debug Area</h3>
-      <pre>
-GET Contains:
-<?php print_r($_GET) ?>
-POST Contains:
-<?php print_r($_POST) ?>
-SESSION Contains:
-<?php print_r($_SESSION) ?>
-      </pre>
-    </aside>
-
+    <?= debugModule() ?>
+    <?= printMyCode() ?>
   </body>
 
 </html>

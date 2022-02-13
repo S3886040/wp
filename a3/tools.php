@@ -77,20 +77,14 @@
   CDATA;
   }
 
-  function debugModule() {
-   echo "<pre id='debug'>";
-   print_r($_POST);
-   echo "</pre>";
+  function ticketTypeCount($array) {
+    $ticketTypeCount = 0;
+    foreach ($array as $seat => $amount) {
+      if($amount) {
+        $ticketTypeCount += 1;
+      }
+    }
+    return $ticketTypeCount;
   }
-
-  function printMyCode() {
-  $allLinesOfCode = file($_SERVER['SCRIPT_FILENAME']);
-  echo "<pre id='myCode'><ol>";
-  foreach($allLinesOfCode as $oneLineOfCode) {
-    echo "<li>" .rtrim(htmlentities($oneLineOfCode)) . "</li>";
-  }
-  echo "</ol></pre>";
-  }
-
   error_reporting( E_ERROR | E_WARNING | E_PARSE );
 ?>

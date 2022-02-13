@@ -1,5 +1,6 @@
 <?php
   include_once('html-modules.php');
+  include_once('tools.php');
 ?>
 
 
@@ -250,6 +251,8 @@
     </main>
     <?= footerRender() ?>
     <script src='scroll.js'></script>
+    <?= debugModule() ?>
+    <?= printMyCode() ?>
   </body>
 
 </html>

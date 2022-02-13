@@ -7,7 +7,7 @@ const totalDiv = document.getElementById("totalAmount");
 // Here we set create our ticket selection object which will be updated as the customers
 // enters data into the booking form.
 // The object is initated by the PHP version if there is data saved for the user on reload.
-let ticketSelection = ticketSelectionPHP;
+let ticketSelection = {};
 // Prices object - data is taken from assignment 2 spec
 let prices = {
   discount: {
@@ -246,13 +246,19 @@ formSubmit.addEventListener("click", function (e) {
 ////////////////////////////
 //On load Event to calculate prices with pre loaded user input
 window.addEventListener("load", function (e) {
-  ticketSelection = ticketSelectionPHP;
   dayButtons.forEach((item) => {
-    console.log(item.checked);
     if (item.checked) {
       ticketSelection.day = item.value;
     }
   });
+
+  tixQty.forEach(function (item) {
+    if (item.value > 0) {
+      let seatTypeTemp = item.name.slice(6, 9);
+      ticketSelection[seatTypeTemp] = item.value;
+    }
+  });
+
   let time = getShowingTime(ticketSelection.day);
   let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
     ticketSelection.day,

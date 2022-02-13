@@ -1,4 +1,15 @@
 Order date	Name	Email	Mobile	Movie Code	Day of Movie	Time of Movie	#STA	$STA	#STP	$STP	#STC	$STC	#FCA	$FCA	#FCP	$FCP	#FCC	$FCC	Total	GST
-12/02/2022 12:36	ff	sds@ff.com	0411 444 555	ACT	SUN	9pm	1	20.5	0	0	0	0	0	0	0	0	0	0	20.5	1.86
-"12/02 12:39"	ff	sds@ff.com	"0411 444 555"	ACT	SUN	9pm	1	20.5	0	0	0	0	0	0	0	0	0	0	20.5	1.86
-"12/02 12:42"	gffgfg	dd@ee.com	"0411 444 555"	ACT	FRI	9pm	1	20.5	3	54	0	0	1	30	1	27	0	0	131.5	11.95
+"Sunday 13/02/22 12:49"	ff	dd@ee.com	0411111112	ACT	FRI	9pm	1	20.5	0	0	0	0	0	0	0	0	0	0	20.50	1.86
+"Sunday 13/02/22 12:50"	ff	dd@ee.com	"0411 444 555"	FAM	MON	12pm	1	15	0	0	0	0	0	0	0	0	0	0	15.00	1.36
+"Sunday 13/02/22 12:50"	ff	dd@ee.com	"0411 444 555"	FAM	MON	12pm	1	15	0	0	0	0	0	0	0	0	0	0	15.00	1.36
+"Sunday 13/02/22 12:52"	ff	dd@ee.com	"0411 444 555"	FAM	SUN	3pm	1	20.5	1	18	1	16.5	1	30	1	27	1	24	136.00	12.36
+"Sunday 13/02/22 01:05"	ff	sds@ff.com	"0411 444 555"	FAM	SAT	3pm	1	20.5	0	0	0	0	0	0	0	0	0	0	20.50	1.86
+"Sunday 13/02/22 01:05"	ff	sds@ff.com	"0411 444 555"	FAM	SAT	3pm	1	20.5	0	0	0	0	0	0	0	0	0	0	20.50	1.86
+"Sunday 13/02/22 01:05"	ff	sds@ff.com	"0411 444 555"	FAM	SAT	3pm	1	20.5	0	0	0	0	0	0	0	0	0	0	20.50	1.86
+"Sunday 13/02/22 01:11"	ff	dd@ee.com	0411111111	RMC	SAT	3pm	1	20.5	0	0	0	0	0	0	0	0	0	0	20.50	1.86
+"Sunday 13/02/22 01:15"	ff	dd@ee.com	"0411 444 555"	RMC	SAT	3pm	1	20.5	0	0	0	0	0	0	0	0	0	0	20.50	1.86
+"Sunday 13/02/22 01:16"	ff	sds@ff.com	"0411 444 555"	RMC	SAT	3pm	1	20.5	0	0	0	0	0	0	0	0	0	0	20.50	1.86
+"Sunday 13/02/22 01:16"	ff	sds@ff.com	"0411 444 555"	RMC	SAT	3pm	1	20.5	0	0	0	0	0	0	0	0	0	0	20.50	1.86
+"Sunday 13/02/22 01:16"	ff	sds@ff.com	"0411 444 555"	RMC	SAT	3pm	1	20.5	1	18	1	16.5	1	30	1	27	1	24	136.00	12.36
+"Sunday 13/02/22 13:20:54"	ff	sds@ff.com	"0411 444 555"	RMC	SAT	3pm	1	20.5	1	18	1	16.5	1	30	1	27	1	24	136.00	12.36
+"Sunday 13/02/22 13:21"	ff	sds@ff.com	"0411 444 555"	RMC	SAT	3pm	1	20.5	1	18	1	16.5	1	30	1	27	1	24	136.00	12.36
