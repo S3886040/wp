@@ -24,7 +24,6 @@
   $priceExGST = $totals['finalTotal'] - $totals['GST'];
 
   $filename = 'bookings.txt';
-  chmod('bookings.txt', 0606);
   if( ($fp = fopen($filename, "a")) && flock($fp, LOCK_EX) !== false ) {;
     fputcsv($fp, $cells, "\t");
     flock($fp, LOCK_UN);
