@@ -1,4 +1,5 @@
 /// Scroll Navigation ////
+//Built from soultion provided by Trevor in Course Modules
 window.onscroll = function () {
   if (window.location.pathname.includes("index")) {
     let navLinks = document

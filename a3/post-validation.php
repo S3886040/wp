@@ -1,12 +1,7 @@
 <?php
 
-/* Call this function in the booking page like so=>
-   $fieldErrors = validateBooking();
-   If the array is empty, then no errors were generated
-*/
-
 function validateBooking() {
-  $errors = []; // new empty array to return error messages
+  $errors = [];
   $nameRegex = "/^[a-zA-Z '.-]{1,100}$/";
   $numberRegex = "/^(\(04\)|04|\+614)( ?\d){8}$/";
   // Name checks
@@ -58,7 +53,7 @@ function validateBooking() {
   return $errors;
 }
 
-// Will return showing time or string confirming film is not showing on day passed to function
+// Will return showing time or a string confirming invalid data
 function getShowingTime($day) {
   $dayCategory = "";
   $time = "";

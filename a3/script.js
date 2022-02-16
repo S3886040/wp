@@ -6,7 +6,7 @@ const totalDiv = document.getElementById("totalAmount");
 
 // Here we set create our ticket selection object which will be updated as the customers
 // enters data into the booking form.
-// The object is initated by the PHP version if there is data saved for the user on reload.
+// Will pre populate on reload if values are present in the form.
 let ticketSelection = {};
 // Prices object - data is taken from assignment 2 spec
 let prices = {
@@ -27,7 +27,7 @@ let prices = {
     FCC: 24.0,
   },
 };
-
+// Pricing policy object sourced from CE solution
 var pricingPolicy = {
   MON: { "12pm": "discount", "6pm": "discount", "9pm": "discount" },
   TUES: { "12pm": "discount", "6pm": "full", "9pm": "full" },
@@ -37,7 +37,7 @@ var pricingPolicy = {
   SAT: { "12pm": "full", "3pm": "full", "6pm": "full", "9pm": "full" },
   SUN: { "12pm": "full", "3pm": "full", "6pm": "full", "9pm": "full" },
 };
-
+// This function was sourced form Course Engagemnt solution and reworked
 function isFullDiscountedOrNotShowing(day, time) {
   if (
     typeof pricingPolicy[day] === "undefined" ||
@@ -49,8 +49,7 @@ function isFullDiscountedOrNotShowing(day, time) {
   return pricingPolicy[day][time];
 }
 
-// Will return a boolean value if file is showing. And update the global dayCategory
-// Variable.
+// Will return the time of the movie showing
 function getShowingTime(day) {
   let dayCategory = "";
   let time;

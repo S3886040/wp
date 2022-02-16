@@ -18,7 +18,7 @@
     $totals
   );
   $details = $_SESSION['cart'];
-  //session_unset();
+  session_unset();
 
   $ticketTypeCount = ticketTypeCount($details['seats']);
   $priceExGST = $totals['finalTotal'] - $totals['GST'];
@@ -98,7 +98,7 @@
               <p><?= $details['user']['mobile']?></p>
             </div>
           </div>
-      </div>
+        </div>
       </section>
       <section id="tickets">
         <h1>Tickets</h1>
