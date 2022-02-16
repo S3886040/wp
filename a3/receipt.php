@@ -29,7 +29,6 @@
     flock($fp, LOCK_UN);
     fclose($fp);
   }
-
  ?>
 <!DOCTYPE html>
 <html lang='en'>
@@ -53,6 +52,13 @@
         </p>
       </section>
       <section id='receipt'>
+        <div class='receipt-movieInfo-column'>
+          <img src='../../media/<?=$movieObject[$currentMovie]['poster'] ?>' alt='Dune' style='width:300px;height:300px;'>
+          <h1><?= $movieObject[$currentMovie]['title'] ?></h1>
+          <p><?= $details['day'] . " " . $details['time']?></p>
+          <p>Lunardo Cinema Mt. Martha</p>
+        </div>
+        <div class='receipt-details-column'>
           <h1>Booking Details</h1>
           <div class='underline'></div>
           <div class='receipt-details'>
@@ -92,6 +98,7 @@
               <p><?= $details['user']['mobile']?></p>
             </div>
           </div>
+      </div>
       </section>
       <section id="tickets">
         <h1>Tickets</h1>
@@ -99,6 +106,7 @@
         <div class="tickets-container">
           <?= tickets($details) ?>
         </div>
+        <a class='button' onclick="window.print()">Print PDF</a>
       </section>
     </main>
     <?= footerRender() ?>

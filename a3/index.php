@@ -6,7 +6,8 @@
 
 <!DOCTYPE html>
 <html lang='en'>
-<?= headRender("Assignment 3") ?>
+  <?= headRender("Assignment 3") ?>
+
   <body>
     <?= headerRender() ?>
     <?= navRender() ?>

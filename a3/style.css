@@ -377,6 +377,7 @@ form {
 }
 .badInput {
   background-color: pink;
+  transition: background-color 0.5s ease;
 }
 .day-set {
   display: block;
@@ -457,19 +458,23 @@ input[type="submit"] {
   width: 300px;
 }
 #receipt {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
   padding-top: 50px;
   padding-left: 30vh;
   padding-right: 30vh;
-  page-break-after: always;
+}
+#receipt .underline {
+  width: 100%;
 }
 .receipt-movieInfo-column img {
   max-width: 100%;
   max-height: 80%;
   object-fit: scale-down;
 }
-
-#receipt .underline {
-  width: 100%;
+.receipt-movieInfo-column h1,
+.receipt-movieInfo-column p {
+  padding-left: 50px;
 }
 .receipt-details {
   display: grid;
@@ -490,24 +495,26 @@ input[type="submit"] {
 }
 .tickets-container {
   padding-top: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 .ticket {
-  display: grid;
-  grid-template-columns: 40% 30% 30%;
+  display: inline-block;
+  position: relative;
   padding: 20px;
+  margin-right: 20px;
   border: black 2px dashed;
   min-height: 200px;
+  max-height: 200px;
   min-width: 500px;
   max-width: 500px;
-  page-break-inside: avoid;
-  margin-top: 10px;
 }
 .ticket-edge {
+  position: relative;
+  left: 320px;
+  bottom: 160px;
   border-top: black 2px dashed;
   transform: rotate(-90deg);
   min-width: 212px;
+  max-width: 212px;
   min-height: 150px;
   padding-left: 20px;
   padding-top: 20px;
@@ -521,19 +528,57 @@ input[type="submit"] {
 .ticket-edge h3 {
   font-size: 12px;
 }
-.ticket-icon {
+.ticket img {
   padding-top: 20px;
-  max-height: 100px;
+  max-height: 80px;
   z-index: -1;
+  position: absolute;
+  left: 210px;
+  top: -5px;
 }
-/*BreakPoints for screen sizes*/
-/*Medium size screens*/
-@media only screen and (max-width: 1400px) {
+#tickets .button:hover {
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.7);
+}
+#tickets a {
+  font-weight: 600;
+}
+@media print {
+  #receipt {
+    display: block;
+    padding-top: 50px;
+    padding-left: 10vh;
+    padding-right: 10vh;
+    page-break-after: always;
+  }
+  #receipt p {
+    font-size: 14px;
+  }
   .tickets-container {
-    display: grid;
-    grid-template-columns: 1fr;
+    page-break-before: always;
+    position: relative;
+    display: inline-block;
+  }
+  .ticket {
+    display: inline-block;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  #tickets {
+    padding-left: 10vh;
+    padding-right: 10vh;
+  }
+  header,
+  footer,
+  aside,
+  nav,
+  pre,
+  button,
+  .receipt-movieInfo-column {
+    display: none;
   }
 }
+/*BreakPoints for screen sizes*/
 @media only screen and (max-width: 992px) {
   .card-layout {
     display: grid;
@@ -543,6 +588,13 @@ input[type="submit"] {
   #tickets {
     padding-left: 5px;
     padding-right: 0vh;
+  }
+  #receipt {
+    grid-template-columns: 1fr;
+  }
+  .receipt-movieInfo-column {
+    margin-left: auto;
+    margin-right: auto;
   }
   .content,
   .about-us-content,
@@ -586,7 +638,6 @@ input[type="submit"] {
   #about-us {
     height: 150vh;
   }
-
   .content,
   .about-us-content,
   .seats-prices-content,

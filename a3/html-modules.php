@@ -1,6 +1,6 @@
 <?php
   function headRender($title) {
-    $html = <<<"OUTPUT"
+    echo "
         <head>
           <meta charset='utf-8'>
           <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -8,15 +8,13 @@
 
           <!-- Keep wireframe.css for debugging, add your css to style.css -->
           <link id='wireframecss' type='text/css' rel='stylesheet' href='../wireframe.css' disabled>
-          <link id='stylecss' type='text/css' rel='stylesheet' href="style.css?t=<?= filemtime('style.css'); ?>">
+          <link rel='icon' href='../../media/camera_icon.svg' type='image/x-icon' />
+          <link id='stylecss' type='text/css' rel='stylesheet' href='style.css?t=" . filemtime('style.css') . "'>
           <script src='../wireframe.js'></script>
           <link rel='preconnect' href='https://fonts.googleapis.com'>
           <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
           <link href='https://fonts.googleapis.com/css2?family=Amatic+SC&family=Montserrat&display=swap' rel='stylesheet'>
-        </head>
-      OUTPUT;
-      echo $html;
-
+        </head>";
   }
 
   function headerRender() {
@@ -125,16 +123,12 @@
       if($amount) {
         for ($i=0; $i < $amount; $i++) {
           echo "<div class='ticket'>
-                  <div class='ticket-main'>
+                  <img src='../../media/camera_icon.svg' alt='camera icon' class='ticket-icon'>
                     <h2>Lunardo Cinema</h2>
                     <h3>{$movieObject[$details['movie']]['title']} {$movieObject[$details['movie']]['rating']}</h3>
                     <p>{$details['day']} {$details['time']} </p>
                     <p>Purchased: {$details['bookingTime']}</p>
                     <p>{$ticketObject[$seat]}</p>
-                  </div>
-                  <div class='ticket-icon'>
-                    <img src='../../media/camera_icon.svg' alt='camera icon' class='ticket-icon'>
-                  </div>
                   <div class='ticket-edge'>
                     <h2>Lunardo Cinema</h2>
                     <h3>{$movieObject[$details['movie']]['title']} {$movieObject[$details['movie']]['rating']}</h3>
@@ -172,6 +166,5 @@
   }
   echo "</ol></pre>";
   }
-
 
 ?>
