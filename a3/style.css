@@ -554,7 +554,6 @@ input[type="submit"] {
     font-size: 14px;
   }
   .tickets-container {
-    page-break-before: always;
     position: relative;
     display: inline-block;
   }
@@ -573,7 +572,7 @@ input[type="submit"] {
   aside,
   nav,
   pre,
-  button,
+  a,
   .receipt-movieInfo-column {
     display: none;
   }
