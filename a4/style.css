@@ -396,10 +396,14 @@ input[type="number"] {
 input[type="radio"]:checked + label {
   box-shadow: 0px 0px;
 }
+input[type="radio"]:not() + label {
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+}
 input[type="radio"] {
   display: none;
 }
-.day-set label {
+.day-set label,
+.userMemLabel {
   display: inline-block;
   margin-right: 20px;
   margin-top: 10px;
@@ -410,6 +414,10 @@ input[type="radio"] {
   font-family: "Amatic SC", cursive;
   font-size: 25px;
   transition: 0.1s;
+}
+.userMemLabel {
+  position: relative;
+  left: 40vw;
 }
 #not-showing-modal {
   background-color: #61091095;

@@ -43,7 +43,7 @@
   $dayErrorStyle = '';
   $seatsError = '';
 
-  // Errors will be displayed on booking page if found. 
+  // Errors will be displayed on booking page if found.
   if(count($formErrors) > 0) {
     $nameError = ' <span style="color:red">'.unsetFB($formErrors['user']['name']).'</span>';
     $emailError = ' <span style="color:red">'.unsetFB($formErrors['user']['email']).'</span>';
@@ -79,7 +79,7 @@
               <legend>Standard Seats</legend>
               <div class='underline'></div>
               <label for='STA'>Adult</label>
-              <input id='STA' type='number' min='1' max='10' name=seats[STA] value="<?= $_POST['seats']['STA'] = htmlentities($_POST['seats']['STA'], ENT_QUOTES); ?>" /><br />
+              <button>-</button><input id='STA' type='number' min='1' max='10' name=seats[STA] value="<?= $_POST['seats']['STA'] = htmlentities($_POST['seats']['STA'], ENT_QUOTES); ?>" /><button>+</button><br />
               <label for='STP'>Concession</label>
               <input id='STP' type='number' min='1' max='10' name=seats[STP] value="<?= $_POST['seats']['STP'] = htmlentities($_POST['seats']['STP'], ENT_QUOTES); ?>" /><br />
               <label for='STC'>Child</label>
@@ -122,6 +122,7 @@
               <div id="totalAmount"></div>
             </fieldset>
             <input id='formSubmit' type='submit' name='submit' value='submit' />
+            <input type=radio id='userMem' name='userMem' value='UserMem'  /><label class="userMemLabel" id='userMemLabel' for='userMem' checked>Remember Me</label>
           </form>
         </div>
       </section>

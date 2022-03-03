@@ -1,7 +1,7 @@
 // Price Calculations //
 // These variables are global variables relative to price Calculations
 const tixQty = document.querySelectorAll("[type=number]");
-const dayButtons = document.querySelectorAll("[type=radio]");
+const dayButtons = document.querySelectorAll(".day-set >[type=radio]");
 const totalDiv = document.getElementById("totalAmount");
 
 // Here we set create our ticket selection object which will be updated as the customers
@@ -195,6 +195,23 @@ numberInput.addEventListener("input", function () {
 
 emailInput.addEventListener("input", function () {
   regexTester(emailRegex, emailInput);
+});
+// Remeber Me Button //
+userMemLabel = document.getElementById("userMemLabel");
+userMemLabel.addEventListener("click", function (e) {
+  localStorage.setItem("Name", nameInput.value);
+
+  if (userMemLabel.checked) {
+    userMemLabel.innerHTML = "Forget Me";
+    localStorage.setItem("Name", nameInput.value);
+    localStorage.setItem("Email", emailInput.value);
+    localStorage.setItem("PhoneNumber", numberInput.value);
+    userMemLabel.checked = false;
+  } else {
+    localStorage.clear();
+    userMemLabel.innerHTML = "Remember Me";
+    userMemLabel.checked = true;
+  }
 });
 
 // On Form Submit //
