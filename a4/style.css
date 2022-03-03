@@ -1,0 +1,675 @@
+/* Global Styles Are here */
+/*Color Pallette:
+    Grey header background: #dbd4d5
+    Orange Highlights: #FB8122
+    nav bar background color(red): #610910
+    White Writing: #ffffff
+    Black Background: #1e1717
+    nav bar: #610910
+*/
+html body {
+  overflow: auto;
+  margin: 0;
+}
+/* Original idea sourced from https://levelup.gitconnected.com/animated-page-scroll-with-html-and-css-only-3788c4e2b853 */
+html {
+  scroll-behavior: smooth;
+}
+h1,
+h2,
+h3,
+.button {
+  margin: 0;
+  font-family: "Amatic SC", cursive;
+}
+p,
+ul,
+table,
+form,
+span {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+.underline {
+  padding-bottom: 10px;
+  width: 150px;
+  border-bottom: #fb8122 solid 2px;
+}
+/*Header and Nav bar styles go here*/
+#home {
+  border: #dbd4d5 solid 2px;
+  background-color: #dbd4d5;
+  color: #1e1717;
+}
+.header-content-wrapper {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.logo {
+  max-width: 80px;
+}
+/*Orignal idea for stick nav bar sourced from https://dev.to/asaaki/sticky-navigation-bar-without-javascript-4d1p */
+.nav-bar {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  background-color: #610910;
+}
+.nav-list {
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+}
+.nav-item {
+  color: #ffffff;
+  display: inline;
+}
+.nav-item a:hover {
+  color: #fb8122;
+}
+.nav-item a {
+  padding-left: 40px;
+  padding-right: 40px;
+  color: white;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+}
+nav a.current {
+  color: #fb8122;
+}
+/*Home Page Styles are here*/
+div#filter {
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  height: 100%;
+}
+.content {
+  position: relative;
+  top: 20vh;
+  left: 20vh;
+  max-width: 80%;
+  height: 100%;
+}
+#home-content .button:hover {
+  box-shadow: 2px 2px rgba(255, 255, 255, 0.7);
+}
+#home-content h1 {
+  font-size: 30px;
+}
+.button {
+  text-decoration: none;
+  font-family: "Amatic SC", cursive;
+  font-size: 25px;
+  color: #1e1717;
+  padding: 15px;
+  border-radius: 8px;
+  border-color: #fb8122;
+  background-color: #fb8122;
+  max-height: 30px;
+  max-width: 100px;
+  text-align: center;
+}
+#home-content .button {
+  position: relative;
+  top: 40px;
+}
+
+/*Original image sourced from Freepik https://www.freepik.com/free-photo/rows-red-seats-theater_3532061.htm#page=1&query=cinema&position=1&from_view=search */
+#home-content {
+  background: url("../../media/splash.jpg") no-repeat center;
+  background-color: #1e1717;
+  color: #ffffff;
+  margin: 0;
+  height: 80vh;
+}
+/*About us section styles are here*/
+/*Original image sourced from Pexels https://www.pexels.com/photo/retro-plastic-bobbin-with-film-3921000/ */
+#about-us {
+  background: url("../../media/about-us.jpg") no-repeat center;
+  height: 100vh;
+  background-color: #dbd4d5;
+  overflow: inherit;
+}
+div#about-us-filter {
+  background-color: rgba(225, 226, 226, 0.9);
+  width: 100%;
+  height: 100%;
+}
+.about-us-content {
+  position: relative;
+  top: 30vh;
+  left: 20vh;
+  max-width: 80%;
+  max-height: 100%;
+  margin-bottom: 100px;
+}
+#about-us h1 {
+  font-size: 30px;
+}
+/*Seat/Prices section styles are here*/
+#seats-prices {
+  min-height: 100%;
+}
+#seats-prices h1 {
+  font-size: 30px;
+}
+.seats-prices-content {
+  font-family: "Cormorant Garamond", serif;
+  position: relative;
+  top: 10vh;
+  left: 20vh;
+  max-width: 80%;
+  height: 100%;
+}
+.seat-img {
+  max-width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 15px;
+}
+th {
+  padding-top: 20px;
+  background-color: #610910;
+  color: #ffffff;
+}
+td,
+th {
+  padding: 10px;
+}
+td {
+  text-align: center;
+}
+.seats-prices-content span {
+  font-size: 13px;
+}
+/*Now Showing section styles are here*/
+#now-showing {
+  min-height: 100vh;
+  background-color: #1e1717;
+}
+#now-showing h1 {
+  font-size: 30px;
+}
+.now-showing-content {
+  position: relative;
+  top: 10vh;
+  left: 20vh;
+  max-width: 80%;
+  height: 100%;
+  color: #ffffff;
+}
+/*Flip card section styles are originally sourced from W3Schools - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_flip_card */
+.card-layout {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.card-layout:nth-child(2n + 1) {
+  padding-bottom: 80px;
+}
+.flip-card {
+  background-color: transparent;
+  width: 400px;
+  height: 300px;
+  margin: 20px;
+  justify-self: center;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: black;
+}
+.flip-card-front p {
+  margin: 0;
+  font-weight: 600;
+}
+.flip-card-back {
+  background-color: #dbd4d5;
+  width: 360px;
+  color: #1e1717;
+  transform: rotateY(180deg);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 15px;
+  display: flex;
+  flex-flow: nowrap;
+  flex-direction: column;
+  overflow: auto;
+}
+.flip-card-back .underline {
+  height: 4px;
+}
+.flip-card-back p {
+  margin: 0;
+  padding-top: 10px;
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+.flip-card-back .button:focus {
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.4);
+}
+.flip-card-back h2 {
+  padding-top: 10px;
+}
+ul {
+  list-style-type: none;
+}
+.flip-card img {
+  max-width: 100%;
+  max-height: 80%;
+  object-fit: scale-down;
+}
+
+.img-left {
+  width: 50%;
+  padding-left: 20px;
+}
+.content-right {
+  padding-left: 20px;
+  width: 50%;
+}
+.flip-card-front p {
+  background-color: #dbd4d5;
+  font-family: "Amatic SC", cursive;
+  max-width: 150px;
+}
+.flip-card-front h2 {
+  font-size: 30px;
+}
+footer {
+  position: relative;
+  left: 10vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  max-width: 80%;
+}
+/*Added styles for booking page*/
+/*Styles for #movie-details section*/
+#movie-details {
+  padding-bottom: 150px;
+  background-color: #1e1717;
+}
+.movie-details-content {
+  position: relative;
+  top: 10vh;
+  left: 20vh;
+  max-width: 80%;
+  color: #ffffff;
+}
+.flex-details {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.flex-details img {
+  max-width: 100%;
+  max-height: 80%;
+  object-fit: scale-down;
+}
+.flex-details .content-right,
+.flex-details .img-left {
+  padding-left: 0px;
+}
+#movie-details h1 {
+  font-size: 40px;
+}
+/*Styles for booking Form*/
+#booking-form {
+  background-color: #dbd4d5;
+  padding-bottom: 150px;
+}
+#booking-form h1 {
+  font-size: 30px;
+}
+.booking-form-content {
+  position: relative;
+  top: 10vh;
+  left: 20vh;
+  max-width: 80%;
+}
+fieldset {
+  border: none;
+}
+form {
+  position: relative;
+  left: 15vw;
+  width: 80%;
+}
+.badInput {
+  background-color: pink;
+  transition: background-color 0.5s ease;
+}
+.day-set {
+  display: block;
+}
+/*Style for arrow button removal sourced from w3schools https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  position: absolute;
+  left: 60vh;
+  text-align: center;
+}
+input[type="radio"]:checked + label {
+  box-shadow: 0px 0px;
+}
+input[type="radio"] {
+  display: none;
+}
+.day-set label {
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 10px;
+  background: #fb8122;
+  border-radius: 4px;
+  padding: 6px;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+  font-family: "Amatic SC", cursive;
+  font-size: 25px;
+  transition: 0.1s;
+}
+#not-showing-modal {
+  background-color: #61091095;
+  color: white;
+  border: 1px solid #1e1717;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 3px;
+  visibility: hidden;
+  margin-top: 10px;
+}
+legend {
+  font-weight: bold;
+}
+.seatTitle {
+  padding-top: 10px;
+}
+input[type="submit"] {
+  margin-right: 20px;
+  background: #fb8122;
+  border-radius: 4px;
+  padding: 6px;
+  font-family: "Amatic SC", cursive;
+  font-size: 25px;
+  position: relative;
+  left: 40vw;
+}
+#totalAmount {
+  background-color: white;
+  width: 175px;
+  height: 20px;
+  box-shadow: 0 0 3px #1e1717;
+}
+/*Styles for #receipt-section section*/
+#receipt-header {
+  padding-top: 50px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+#receipt-header h1 {
+  font-size: 40px;
+}
+#receipt-header .underline {
+  width: 300px;
+}
+#receipt {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding-top: 50px;
+  padding-left: 30vh;
+  padding-right: 30vh;
+}
+#receipt .underline {
+  width: 100%;
+}
+.receipt-movieInfo-column img {
+  max-width: 100%;
+  max-height: 80%;
+  object-fit: scale-down;
+}
+.receipt-movieInfo-column h1,
+.receipt-movieInfo-column p {
+  padding-left: 50px;
+}
+.receipt-details {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.invoice-details {
+  font-weight: bold;
+  text-align: right;
+  padding-right: 20px;
+}
+#tickets {
+  padding-top: 50px;
+  padding-left: 30vh;
+  padding-right: 30vh;
+}
+#tickets .underline {
+  width: 100%;
+}
+.tickets-container {
+  padding-top: 20px;
+}
+.ticket {
+  display: inline-block;
+  position: relative;
+  padding: 20px;
+  margin-right: 20px;
+  border: black 2px dashed;
+  min-height: 200px;
+  max-height: 200px;
+  min-width: 500px;
+  max-width: 500px;
+}
+.ticket-edge {
+  position: relative;
+  left: 320px;
+  bottom: 160px;
+  border-top: black 2px dashed;
+  transform: rotate(-90deg);
+  min-width: 212px;
+  max-width: 212px;
+  min-height: 150px;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+.ticket-edge p {
+  font-size: 12px;
+}
+.ticket-edge h2 {
+  font-size: 14px;
+}
+.ticket-edge h3 {
+  font-size: 12px;
+}
+.ticket img {
+  padding-top: 20px;
+  max-height: 80px;
+  z-index: -1;
+  position: absolute;
+  left: 210px;
+  top: -5px;
+}
+#tickets .button:hover {
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.7);
+}
+#tickets a {
+  font-weight: 600;
+}
+@media print {
+  #receipt {
+    display: block;
+    padding-top: 50px;
+    padding-left: 10vh;
+    padding-right: 10vh;
+    page-break-after: always;
+  }
+  #receipt p {
+    font-size: 14px;
+  }
+  .tickets-container {
+    position: relative;
+    display: inline-block;
+  }
+  .ticket {
+    display: inline-block;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  #tickets {
+    padding-left: 10vh;
+    padding-right: 10vh;
+  }
+  header,
+  footer,
+  aside,
+  nav,
+  pre,
+  a,
+  .receipt-movieInfo-column {
+    display: none;
+  }
+}
+/*BreakPoints for screen sizes*/
+@media only screen and (max-width: 992px) {
+  .card-layout {
+    display: grid;
+    grid-template-columns: auto;
+  }
+  #receipt,
+  #tickets {
+    padding-left: 5px;
+    padding-right: 0vh;
+  }
+  #receipt {
+    grid-template-columns: 1fr;
+  }
+  .receipt-movieInfo-column {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .content,
+  .about-us-content,
+  .seats-prices-content,
+  .now-showing-content,
+  .movie-details-content,
+  .booking-form-content {
+    left: 5vh;
+    max-width: 90%;
+  }
+  input[type="number"] {
+    left: 20vh;
+  }
+  .receipt-details {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (max-width: 768px) {
+  #about-us {
+    height: 150vh;
+  }
+
+  .content,
+  .about-us-content,
+  .seats-prices-content,
+  .now-showing-content,
+  .movie-details-content,
+  .booking-form-content {
+    left: 5vh;
+    max-width: 90%;
+  }
+  input[type="number"] {
+    left: 20vh;
+  }
+  .nav-item a {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #about-us {
+    height: 150vh;
+  }
+  .content,
+  .about-us-content,
+  .seats-prices-content,
+  .now-showing-content,
+  .movie-details-content,
+  .booking-form-content,
+  footer {
+    left: 2vh;
+    max-width: 90%;
+  }
+  form {
+    left: 0vw;
+  }
+  .nav-item a {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .flip-card,
+  .flip-card-back {
+    width: 300px;
+  }
+  .flip-card-back {
+    width: 280px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  input[type="number"] {
+    left: 20vh;
+  }
+  iframe {
+    width: 300px;
+  }
+  #receipt p {
+    font-size: 14px;
+  }
+}

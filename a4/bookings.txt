@@ -1,0 +1,11 @@
+Order date	Name	Email	Mobile	Movie Code	Day of Movie	Time of Movie	#STA	$STA	#STP	$STP	#STC	$STC	#FCA	$FCA	#FCP	$FCP	#FCC	$FCC	Total	GST
+"Sunday 13/02/22 12:49"	ff	dd@ee.com	0411111112	ACT	FRI	9pm	1	20.5	0	0	0	0	0	0	0	0	0	0	20.50	1.86
+"Sunday 13/02/22 12:50"	ff	dd@ee.com	"0411 444 555"	FAM	MON	12pm	1	15	0	0	0	0	0	0	0	0	0	0	15.00	1.36
+"Wednesday 16/02/22 13:51"	gffgfg	sds@ff.com	"0411 444 555"	ACT	THURS	9pm	0	0	3	54	0	0	0	0	0	0	0	0	54.00	4.91
+"Wednesday 16/02/22 13:53"	e	e@e.com	0411444444	RMC	SAT	3pm	0	0	8	144	0	0	0	0	0	0	0	0	144.00	13.09
+"Wednesday 16/02/22 13:54"	ff	sds@ff.com	0411111111	AHF	SAT	9pm	9	184.5	0	0	0	0	0	0	0	0	0	0	184.50	16.77
+"Wednesday 16/02/22 13:57"	ff	sds@ff.com	0411111111	AHF	SAT	9pm	9	184.5	0	0	0	0	0	0	0	0	0	0	184.50	16.77
+"Wednesday 16/02/22 14:13"	ff	sds@ff.com	"0411 444 555"	AHF	SAT	9pm	0	0	9	162	0	0	0	0	0	0	0	0	162.00	14.73
+"Wednesday 16/02/22 14:13"	ff	sds@ff.com	"0411 444 555"	AHF	SAT	9pm	0	0	9	162	0	0	0	0	0	0	0	0	162.00	14.73
+"Wednesday 16/02/22 14:41"	ff	dd@ee.com	"0411 444 555"	FAM	FRI	6pm	1	20.5	0	0	0	0	0	0	0	0	0	0	20.50	1.86
+"Wednesday 16/02/22 14:49"	gffgfg	dd@ee.com	0411111111	AHF	SUN	9pm	3	61.5	0	0	0	0	0	0	0	0	0	0	61.50	5.59
