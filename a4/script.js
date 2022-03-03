@@ -105,41 +105,49 @@ function calculatePrices(ticketType) {
   }
 }
 
-tixQty.forEach(function (item) {
-  item.addEventListener("input", function (e) {
-    let ticketChosen;
-    tixQty.forEach(function (item) {
-      item.classList.remove("badInput");
-      if (item.value > 0) {
-        ticketChosen = true;
-      }
-    });
+function minusButton(seatType, event) {
+  event.preventDefault();
+  console.log("clicked", seatType);
+  document.getElementById(seatType).value += 1;
+}
 
-    if (e.target.value > 10) {
-      e.target.value = 10;
-    } else if (e.target.value <= 0) {
-      e.target.value = "";
-    }
-
-    let seatTypeTemp = e.target.name.slice(6, 9);
-    if (ticketChosen) {
-      ticketSelection[seatTypeTemp] = e.target.value;
-
-      let time = getShowingTime(ticketSelection.day);
-      let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
-        ticketSelection.day,
-        time
-      );
-      if (fullDiscountedOrNotShowing != "not showing") {
-        calculatePrices(fullDiscountedOrNotShowing);
-      } else {
-        totalDiv.innerHTML = "";
-      }
-    } else {
-      delete ticketSelection[seatTypeTemp];
-      calculatePrices(ticketSelection.day);
+function ticketQuantities(e) {
+  let ticketChosen;
+  tixQty.forEach(function (item) {
+    item.classList.remove("badInput");
+    if (item.value > 0) {
+      ticketChosen = true;
     }
   });
+
+  if (e.target.value > 10) {
+    e.target.value = 10;
+  } else if (e.target.value <= 0) {
+    e.target.value = "";
+  }
+
+  let seatTypeTemp = e.target.name.slice(6, 9);
+  if (ticketChosen) {
+    ticketSelection[seatTypeTemp] = e.target.value;
+
+    let time = getShowingTime(ticketSelection.day);
+    let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
+      ticketSelection.day,
+      time
+    );
+    if (fullDiscountedOrNotShowing != "not showing") {
+      calculatePrices(fullDiscountedOrNotShowing);
+    } else {
+      totalDiv.innerHTML = "";
+    }
+  } else {
+    delete ticketSelection[seatTypeTemp];
+    calculatePrices(ticketSelection.day);
+  }
+}
+
+tixQty.forEach(function (item) {
+  item.addEventListener("input", ticketQuantities(event));
 });
 
 notShowingModal = document.getElementById("not-showing-modal");

@@ -79,7 +79,7 @@
               <legend>Standard Seats</legend>
               <div class='underline'></div>
               <label for='STA'>Adult</label>
-              <button>-</button><input id='STA' type='number' min='1' max='10' name=seats[STA] value="<?= $_POST['seats']['STA'] = htmlentities($_POST['seats']['STA'], ENT_QUOTES); ?>" /><button>+</button><br />
+              <button onClick="minusButton('STA', event)">-</button><input id='STA' type='number' min='1' max='10' name=seats[STA] value="<?= $_POST['seats']['STA'] = htmlentities($_POST['seats']['STA'], ENT_QUOTES); ?>" /><button>+</button><br />
               <label for='STP'>Concession</label>
               <input id='STP' type='number' min='1' max='10' name=seats[STP] value="<?= $_POST['seats']['STP'] = htmlentities($_POST['seats']['STP'], ENT_QUOTES); ?>" /><br />
               <label for='STC'>Child</label>
