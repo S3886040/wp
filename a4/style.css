@@ -416,14 +416,17 @@ input[type="radio"] {
   position: relative;
   left: 40vw;
 }
+
 .plus {
   position: absolute;
   left: 32vw;
 }
+
 .minus {
   position: absolute;
   left: 26vw;
 }
+
 #subTotalSTA,
 #subTotalSTP,
 #subTotalSTC,
@@ -459,6 +462,10 @@ input[type="submit"] {
   font-size: 25px;
   position: relative;
   left: 40vw;
+}
+.tixtotaler {
+  display: flex;
+  flex-direction: row;
 }
 #totalAmount {
   background-color: white;
@@ -628,7 +635,7 @@ input[type="submit"] {
     max-width: 90%;
   }
   input[type="number"] {
-    left: 20vw;
+    left: 26vw;
   }
   #subTotalSTA,
   #subTotalSTP,
@@ -636,13 +643,13 @@ input[type="submit"] {
   #subTotalFCA,
   #subTotalFCP,
   #subTotalFCC {
-    left: 27vw;
+    left: 40vw;
   }
   .minus {
-    left: 18vw;
+    left: 23vw;
   }
   .plus {
-    left: 26vw;
+    left: 32vw;
   }
   .receipt-details {
     grid-template-columns: 1fr 1fr;
@@ -704,5 +711,22 @@ input[type="submit"] {
   }
   #receipt p {
     font-size: 14px;
+  }
+  input[type="number"] {
+    left: 35vw;
+  }
+  #subTotalSTA,
+  #subTotalSTP,
+  #subTotalSTC,
+  #subTotalFCA,
+  #subTotalFCP,
+  #subTotalFCC {
+    left: 50vw;
+  }
+  .minus {
+    left: 30vw;
+  }
+  .plus {
+    left: 44vw;
   }
 }

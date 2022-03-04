@@ -372,8 +372,10 @@ window.addEventListener("load", function (e) {
   if (fullDiscountedOrNotShowing != "not showing") {
     calculatePrices(fullDiscountedOrNotShowing);
   }
+  // Here we will check our local storage object when the page loads
+  // and load useful information for the user
   if (localStorage.hasOwnProperty("Name")) {
-    let checked = false;
+    checked = true;
     userMemLabel.innerHTML = "Forget Me";
     userMemLabel.style.boxShadow = "0px 0px";
     nameInput.value = localStorage.getItem("Name");
@@ -382,7 +384,7 @@ window.addEventListener("load", function (e) {
   } else {
     userMemLabel.innerHTML = "Remember Me";
     userMemLabel.style.boxShadow = "3px 3px rgba(0, 0, 0, 0.5)";
-    let checked = false;
+    checked = false;
   }
 });
 
