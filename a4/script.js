@@ -3,6 +3,8 @@
 const tixQty = document.querySelectorAll("[type=number]");
 const dayButtons = document.querySelectorAll(".day-set >[type=radio]");
 const totalDiv = document.getElementById("totalAmount");
+//checked refers to remember me button
+let checked = false;
 
 // Here we set create our ticket selection object which will be updated as the customers
 // enters data into the booking form.
@@ -104,55 +106,116 @@ function calculatePrices(ticketType) {
     totalDiv.innerHTML = "";
   }
 }
+// plus and minus button functions
 
-function minusButton(seatType, event) {
-  event.preventDefault();
-  console.log("clicked", seatType);
-  document.getElementById(seatType).value += 1;
-}
-
-function ticketQuantities(e) {
-  let ticketChosen;
+function minusButton(seatType, event, subTotalDiv) {
   tixQty.forEach(function (item) {
     item.classList.remove("badInput");
     if (item.value > 0) {
       ticketChosen = true;
     }
   });
-
-  if (e.target.value > 10) {
-    e.target.value = 10;
-  } else if (e.target.value <= 0) {
-    e.target.value = "";
+  event.preventDefault();
+  input = document.getElementById(seatType);
+  input.value--;
+  if (input.value <= 0) {
+    input.value = "";
+  } else if (input.value > 10) {
+    input.value = 10;
   }
+  ticketSelection[seatType] = input.value;
 
-  let seatTypeTemp = e.target.name.slice(6, 9);
-  if (ticketChosen) {
-    ticketSelection[seatTypeTemp] = e.target.value;
+  let time = getShowingTime(ticketSelection.day);
+  let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
+    ticketSelection.day,
+    time
+  );
 
-    let time = getShowingTime(ticketSelection.day);
-    let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
-      ticketSelection.day,
-      time
-    );
-    if (fullDiscountedOrNotShowing != "not showing") {
-      calculatePrices(fullDiscountedOrNotShowing);
-    } else {
-      totalDiv.innerHTML = "";
-    }
+  if (fullDiscountedOrNotShowing != "not showing" && input.value != "") {
+    calculatePrices(fullDiscountedOrNotShowing);
+    subTotal =
+      prices[fullDiscountedOrNotShowing][seatType] * parseInt(input.value);
+    document.getElementById(subTotalDiv).innerHTML = "$" + subTotal;
   } else {
-    delete ticketSelection[seatTypeTemp];
-    calculatePrices(ticketSelection.day);
+    totalDiv.innerHTML = "";
+    document.getElementById(subTotalDiv).innerHTML = "";
+  }
+}
+function plusButton(seatType, event, subTotalDiv) {
+  tixQty.forEach(function (item) {
+    item.classList.remove("badInput");
+    if (item.value > 0) {
+      ticketChosen = true;
+    }
+  });
+  event.preventDefault();
+  input = document.getElementById(seatType);
+  input.value++;
+  if (input.value <= 0) {
+    input.value = "";
+  } else if (input.value > 10) {
+    input.value = 10;
+  }
+  ticketSelection[seatType] = input.value;
+
+  let time = getShowingTime(ticketSelection.day);
+  let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
+    ticketSelection.day,
+    time
+  );
+  if (fullDiscountedOrNotShowing != "not showing") {
+    calculatePrices(fullDiscountedOrNotShowing);
+    subTotal =
+      prices[fullDiscountedOrNotShowing][seatType] * parseInt(input.value);
+    document.getElementById(subTotalDiv).innerHTML = "$" + subTotal;
+  } else {
+    totalDiv.innerHTML = "";
+    document.getElementById(subTotalDiv).innerHTML = "";
   }
 }
 
 tixQty.forEach(function (item) {
-  item.addEventListener("input", ticketQuantities(event));
+  item.addEventListener("input", function (e) {
+    let ticketChosen;
+    tixQty.forEach(function (item) {
+      item.classList.remove("badInput");
+      if (item.value > 0) {
+        ticketChosen = true;
+      }
+    });
+
+    if (e.target.value > 10) {
+      e.target.value = 10;
+    } else if (e.target.value <= 0) {
+      e.target.value = "";
+    }
+
+    let seatTypeTemp = e.target.name.slice(6, 9);
+    if (ticketChosen) {
+      ticketSelection[seatTypeTemp] = e.target.value;
+
+      let time = getShowingTime(ticketSelection.day);
+      let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
+        ticketSelection.day,
+        time
+      );
+      if (fullDiscountedOrNotShowing != "not showing") {
+        calculatePrices(fullDiscountedOrNotShowing);
+      } else {
+        totalDiv.innerHTML = "";
+      }
+    } else {
+      delete ticketSelection[seatTypeTemp];
+      calculatePrices(fullDiscountedOrNotShowing);
+    }
+  });
 });
 
 notShowingModal = document.getElementById("not-showing-modal");
 dayButtons.forEach((item) => {
   item.addEventListener("click", function (e) {
+    const subTotals = document.querySelectorAll(".seat-set > div");
+
     ticketSelection.day = e.target.value;
     let time = getShowingTime(ticketSelection.day);
     let fullDiscountedOrNotShowing = isFullDiscountedOrNotShowing(
@@ -169,6 +232,24 @@ dayButtons.forEach((item) => {
       notShowingModal.innerHTML = "The film is not showing on this day";
       totalDiv.innerHTML = "";
     }
+    // This loop will adjust the subtotal values when the user changes
+    // days, thus changing the ticket price
+    subTotals.forEach(function (item) {
+      if (item.id.startsWith("subTotal")) {
+        let seatType = item.id.slice(8, 11);
+        let valueTemp = document.getElementById(seatType).value;
+        if (fullDiscountedOrNotShowing != "not showing" && valueTemp != "") {
+          let subTotalDivTemp = document.getElementById(seatType);
+
+          let subTotalTemp =
+            prices[fullDiscountedOrNotShowing][seatType] *
+            document.getElementById(seatType).value;
+          item.innerHTML = "$" + subTotalTemp;
+        } else {
+          item.innerHTML = "";
+        }
+      }
+    });
   });
 });
 
@@ -205,20 +286,20 @@ emailInput.addEventListener("input", function () {
   regexTester(emailRegex, emailInput);
 });
 // Remeber Me Button //
-userMemLabel = document.getElementById("userMemLabel");
+let userMemLabel = document.getElementById("userMemLabel");
 userMemLabel.addEventListener("click", function (e) {
-  localStorage.setItem("Name", nameInput.value);
-
-  if (userMemLabel.checked) {
+  if (!checked) {
     userMemLabel.innerHTML = "Forget Me";
+    userMemLabel.style.boxShadow = "0px 0px";
     localStorage.setItem("Name", nameInput.value);
     localStorage.setItem("Email", emailInput.value);
-    localStorage.setItem("PhoneNumber", numberInput.value);
-    userMemLabel.checked = false;
+    localStorage.setItem("Number", numberInput.value);
+    checked = true;
   } else {
     localStorage.clear();
     userMemLabel.innerHTML = "Remember Me";
-    userMemLabel.checked = true;
+    userMemLabel.style.boxShadow = "3px 3px rgba(0, 0, 0, 0.5)";
+    checked = false;
   }
 });
 
@@ -290,6 +371,18 @@ window.addEventListener("load", function (e) {
   );
   if (fullDiscountedOrNotShowing != "not showing") {
     calculatePrices(fullDiscountedOrNotShowing);
+  }
+  if (localStorage.hasOwnProperty("Name")) {
+    let checked = false;
+    userMemLabel.innerHTML = "Forget Me";
+    userMemLabel.style.boxShadow = "0px 0px";
+    nameInput.value = localStorage.getItem("Name");
+    emailInput.value = localStorage.getItem("Email");
+    numberInput.value = localStorage.getItem("Number");
+  } else {
+    userMemLabel.innerHTML = "Remember Me";
+    userMemLabel.style.boxShadow = "3px 3px rgba(0, 0, 0, 0.5)";
+    let checked = false;
   }
 });
 

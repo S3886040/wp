@@ -390,14 +390,11 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
   position: absolute;
-  left: 60vh;
+  left: 28vw;
   text-align: center;
 }
 input[type="radio"]:checked + label {
   box-shadow: 0px 0px;
-}
-input[type="radio"]:not() + label {
-  box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
 }
 input[type="radio"] {
   display: none;
@@ -418,6 +415,24 @@ input[type="radio"] {
 .userMemLabel {
   position: relative;
   left: 40vw;
+}
+.plus {
+  position: absolute;
+  left: 32vw;
+}
+.minus {
+  position: absolute;
+  left: 26vw;
+}
+#subTotalSTA,
+#subTotalSTP,
+#subTotalSTC,
+#subTotalFCA,
+#subTotalFCP,
+#subTotalFCC {
+  display: inline-block;
+  position: absolute;
+  left: 35vw;
 }
 #not-showing-modal {
   background-color: #61091095;
@@ -613,7 +628,21 @@ input[type="submit"] {
     max-width: 90%;
   }
   input[type="number"] {
-    left: 20vh;
+    left: 20vw;
+  }
+  #subTotalSTA,
+  #subTotalSTP,
+  #subTotalSTC,
+  #subTotalFCA,
+  #subTotalFCP,
+  #subTotalFCC {
+    left: 27vw;
+  }
+  .minus {
+    left: 18vw;
+  }
+  .plus {
+    left: 26vw;
   }
   .receipt-details {
     grid-template-columns: 1fr 1fr;
@@ -633,9 +662,7 @@ input[type="submit"] {
     left: 5vh;
     max-width: 90%;
   }
-  input[type="number"] {
-    left: 20vh;
-  }
+
   .nav-item a {
     padding-left: 10px;
     padding-right: 10px;
@@ -671,9 +698,7 @@ input[type="submit"] {
     padding-left: 10px;
     padding-right: 10px;
   }
-  input[type="number"] {
-    left: 20vh;
-  }
+
   iframe {
     width: 300px;
   }

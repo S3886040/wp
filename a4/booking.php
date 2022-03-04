@@ -79,21 +79,33 @@
               <legend>Standard Seats</legend>
               <div class='underline'></div>
               <label for='STA'>Adult</label>
-              <button onClick="minusButton('STA', event)">-</button><input id='STA' type='number' min='1' max='10' name=seats[STA] value="<?= $_POST['seats']['STA'] = htmlentities($_POST['seats']['STA'], ENT_QUOTES); ?>" /><button>+</button><br />
+              <button class="minus" onClick="minusButton('STA', event, 'subTotalSTA')" >-</button>
+              <input id='STA' type='number' min='1' max='10' name=seats[STA] value="<?= $_POST['seats']['STA'] = htmlentities($_POST['seats']['STA'], ENT_QUOTES); ?>" />
+              <button class="plus" onClick="plusButton('STA', event, 'subTotalSTA')">+</button><div id="subTotalSTA"></div><br />
               <label for='STP'>Concession</label>
-              <input id='STP' type='number' min='1' max='10' name=seats[STP] value="<?= $_POST['seats']['STP'] = htmlentities($_POST['seats']['STP'], ENT_QUOTES); ?>" /><br />
+              <button class="minus" onClick="minusButton('STP', event, 'subTotalSTP')" >-</button>
+              <input id='STP' type='number' min='1' max='10' name=seats[STP] value="<?= $_POST['seats']['STP'] = htmlentities($_POST['seats']['STP'], ENT_QUOTES); ?>" />
+              <button class="plus" onClick="plusButton('STP', event, 'subTotalSTP')">+</button><div id="subTotalSTP"></div><br />
               <label for='STC'>Child</label>
-              <input id='STC' type='number' min='1' max='10' name=seats[STC] value="<?= $_POST['seats']['STC'] = htmlentities($_POST['seats']['STC'], ENT_QUOTES); ?>" /><br />
+              <button class="minus" onClick="minusButton('STC', event, 'subTotalSTC')" >-</button>
+              <input id='STC' type='number' min='1' max='10' name=seats[STC] value="<?= $_POST['seats']['STC'] = htmlentities($_POST['seats']['STC'], ENT_QUOTES); ?>" />
+              <button class="plus" onClick="plusButton('STC', event, 'subTotalSTC')">+</button><div id="subTotalSTC"></div><br />
             </fieldset>
             <fieldset class='seat-set'>
               <legend>First Class Seats</legend>
               <div class='underline'></div>
               <label for='FCA'>Adult</label>
-              <input id='FCA' type='number' min='1' max='10' name=seats[FCA] value="<?= $_POST['seats']['FCA'] = htmlentities($_POST['seats']['FCA'], ENT_QUOTES); ?>" /><br />
+              <button class="minus" onClick="minusButton('FCA', event, 'subTotalFCA')" >-</button>
+              <input id='FCA' type='number' min='1' max='10' name=seats[FCA] value="<?= $_POST['seats']['FCA'] = htmlentities($_POST['seats']['FCA'], ENT_QUOTES); ?>" />
+              <button class="plus" onClick="plusButton('FCA', event, 'subTotalFCA')">+</button><div id="subTotalFCA"></div><br />
               <label for='FCP'>Concession</label>
-              <input id='FCP' type='number' min='1' max='10' name=seats[FCP] value="<?= $_POST['seats']['FCP'] = htmlentities($_POST['seats']['FCP'], ENT_QUOTES); ?>" /><br />
+              <button class="minus" onClick="minusButton('FCP', event, 'subTotalFCP')" >-</button>
+              <input id='FCP' type='number' min='1' max='10' name=seats[FCP] value="<?= $_POST['seats']['FCP'] = htmlentities($_POST['seats']['FCP'], ENT_QUOTES); ?>" />
+              <button class="plus" onClick="plusButton('FCP', event, 'subTotalFCP')">+</button><div id="subTotalFCP"></div><br />
               <label for='FCC'>Child</label>
-              <input id='FCC' type='number' min='1' max='10' name=seats[FCC] value="<?= $_POST['seats']['FCC'] = htmlentities($_POST['seats']['FCC'], ENT_QUOTES); ?>" /><br />
+              <button class="minus" onClick="minusButton('FCC', event, 'subTotalFCC')" >-</button>
+              <input id='FCC' type='number' min='1' max='10' name=seats[FCC] value="<?= $_POST['seats']['FCC'] = htmlentities($_POST['seats']['FCC'], ENT_QUOTES); ?>" />
+              <button class="plus" onClick="plusButton('FCC', event, 'subTotalFCC')">+</button><div id="subTotalFCC"></div><br />
               <?= $seatsError ?>
             </fieldset>
             <fieldset class='day-set'>
@@ -122,7 +134,7 @@
               <div id="totalAmount"></div>
             </fieldset>
             <input id='formSubmit' type='submit' name='submit' value='submit' />
-            <input type=radio id='userMem' name='userMem' value='UserMem'  /><label class="userMemLabel" id='userMemLabel' for='userMem' checked>Remember Me</label>
+            <input type=radio id='userMem' name='userMem' value='UserMem' checked/><label class="userMemLabel" id='userMemLabel' for='userMem'>Remember Me</label>
           </form>
         </div>
       </section>
